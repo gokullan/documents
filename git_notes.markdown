@@ -174,6 +174,8 @@ Personal Access Tokens
 
 -   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
 
+-   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
+
 Meilisearch
 
 \--master-key BuDML6SBIbVeGPiute8gisixsBDMHGOxxCF_uLqnl5M
