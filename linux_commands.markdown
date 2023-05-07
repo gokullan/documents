@@ -430,10 +430,14 @@ freopen("output.txt", "w", stdout);
     -   lsof -t -itcp:PORT_NUM
     -   <https://askubuntu.com/questions/227161/how-can-we-find-which-process-is-using-a-particular-port>
 
--   Opening Anaconda
+-   Conda
 
-    -   anaconda-navigator
-    -   jupyter-notebook (to access Jupyter Notebook directly)
+    -   `anaconda-navigator`
+    -   `jupyter-notebook` (to access Jupyter Notebook directly)
+    -   `conda env --name myvenv python=3.x`
+    -   `conda env list`
+    -   `conda config --set auto_activate_base false` - to prevent default activation of base environment
+
 
 -   Adding chromedriver to PATH
 
