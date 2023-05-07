@@ -251,6 +251,15 @@ Commands
     -   `mf` to mark a file or directory
     -   `mm`, `mc`, ... to perform the required operation on the marked files/ directories (into the target directory)
 
+**Misc**
+-   Install `build-essential` and `libncurses-dev` before compiling vim from source
+-   (**Important**) Compile vim with x-clip support
+    -   [Commands for compilation](https://stackoverflow.com/questions/11416069/compile-vim-with-clipboard-and-xterm)
+    -   [Specifying the necessary flags](https://superuser.com/questions/235505/compiling-vim-with-xterm-clipboard-support)
+-   Backspace not working: Add `set backspace=indent,eol,start` to ~/.vimrc
+-   Add clipboard functionality
+
+
 **Plugins**
 -   [Markdown Preview for Neo-vim](https://github.com/iamcco/markdown-preview.nvim)
 -   Netrw (inbuilt with vim)
