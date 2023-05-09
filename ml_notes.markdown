@@ -735,6 +735,11 @@ ML Implementation notes
 
     -   Enclose in \$ \<equation\> \$ to enter equations
 
+    -   [Adding Emojis](https://stackoverflow.com/questions/50197537/jupyter-notebook-does-not-support-smileys-in-markdown-cells)
+        -   Copy-paste from [Link 1](https://emojikeyboard.org/) or [Link 2](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+        -   Use unicode (decimal form): &#2400;
+
+
 ## Matplotlib (`matplotlib.pyplot`)
 > `import matplotlib.pyplot as plt`
 
@@ -819,47 +824,54 @@ import seaborn as sns
     -   The parameters `x`, `y` and `hue` refer to column name of the DataFrame `df_subset`
     -   [Reference](https://builtin.com/data-science/tsne-python)
 
-##   Numpy and Pandas
-    <https://www.hackerearth.com/practice/machine-learning/data-manipulation-visualisation-r-python/tutorial-data-manipulation-numpy-pandas-python/tutorial/>
+##  Numpy and Pandas
+
+[Tutorial](https://www.hackerearth.com/practice/machine-learning/data-manipulation-visualisation-r-python/tutorial-data-manipulation-numpy-pandas-python/tutorial/)
 
 ##   Numpy
 
-    -   Numpy slicing --
-        <https://stackoverflow.com/questions/5347091/slicing-numpy-array-representing-nested-list>
+-   Numpy slicing --
+    <https://stackoverflow.com/questions/5347091/slicing-numpy-array-representing-nested-list>
 
-        -   a = np.array(\[\[1,2,3\],\[4,5,6\],\[7,8,9\]\])
+    -   a = np.array(\[\[1,2,3\],\[4,5,6\],\[7,8,9\]\])
 
-        -   a\[:, :1\] =\> \[\[1\],\[4\],\[7\]\]; a\[:, 0\] =\>
-            array(\[1,4\])
+    -   a\[:, :1\] =\> \[\[1\],\[4\],\[7\]\]; a\[:, 0\] =\>
+        array(\[1,4\])
 
-            -   **Slicing syntax**: numpyArray**\[dim_1, dim_2, \... ,
-                dim_n\]**, where dim_i can be of the form **start_index
-                : end_index : step**
-            -   **Note: **Only numpy arrays (not lists) can be sliced
-                using commas as above
+        -   **Slicing syntax**: numpyArray**\[dim_1, dim_2, \... ,
+            dim_n\]**, where dim_i can be of the form **start_index
+            : end_index : step**
+        -   **Note: **Only numpy arrays (not lists) can be sliced
+            using commas as above
 
-    -   np.random.uniform(low, high, size)
+-   np.random.uniform(low, high, size)
 
-    -   np.random.normal(mean, sd, size)
+-   np.random.normal(mean, sd, size)
 
-    -   np.random.randint(low, high, size) -- generates a random integer
-        in the range \[low, high)
+-   np.random.randint(low, high, size) -- generates a random integer
+    in the range \[low, high)
 
-    -   np.append()
+-   np.append()
 
-    -   np.hstack()
+-   np.stack() --->
 
-    -   np.array vs. np.ndarray()
+-   np.hstack()
 
-    -   np.ndarray.item()
+-   np.concatenate()
 
-    -   np.sum()
+-   np.start() --->
 
-    -   np.matmul()
+-   np.array vs. np.ndarray()
 
-    -   <https://stackoverflow.com/questions/24439137/efficient-way-for-appending-numpy-array>
+-   np.ndarray.item()
 
-    -   
+-   np.cumsum() --->
+
+-   np.matmul()
+
+-   <https://stackoverflow.com/questions/24439137/efficient-way-for-appending-numpy-array>
+
+-   
 
 ## Pandas
 
@@ -1083,6 +1095,22 @@ generators and iterators
 Pillow (import PIL)
 
 -   PIL.Image.open("filepath/../sample.jpg")
+
+## pickle
+
+```python
+import pickle
+
+# save an object
+fileObj = open('data.obj', 'wb')
+pickle.dump(exampleObj,fileObj)
+fileObj.close()
+
+# load an object
+fileObj = open('data.obj', 'rb')
+exampleObj = pickle.load(fileObj)
+fileObj.close()
+```
 
 **open-cv** (import cv2)
 

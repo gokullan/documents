@@ -244,20 +244,41 @@ Commands
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
+-   [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)
+    -   `gt` or `gT` for sequential switching
+    -   `xgt` or `xgT` or `:tabn x` to move to the tab number `x`
+    -   `:tabmove x` to physically move the tab
+
+-   Copying to clipboard (if not complied with `xclip`)
+    -   Install `xclip` (`sudo apt install xclip`)
+    -   Yank the required lines: this will be stored in the `"0` register
+    -   `:call system('xclip -sel clipboard', @0)`
+
+
 -   [Using the Netrw File Explorer](https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/)
     -   `:Explore` to open the file explorer
     -   `-` to go one level up
     -   `mt` to mark a target directory
     -   `mf` to mark a file or directory
     -   `mm`, `mc`, ... to perform the required operation on the marked files/ directories (into the target directory)
+    -   `d` to create a new directory
+    -   `D` to delete a file or an empty directory
+    -   `%` to create a new file
+    -   `t` to open in a new tab
+    -   Configuring
+        -   [Set autonumbering](https://stackoverflow.com/questions/8730702/how-do-i-configure-vimrc-so-that-line-numbers-display-in-netrw-in-vim): Add `let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'` to ~/.vimrc
+
+-   [Vundle Plugin Manager]
+    -   [Tutorial](https://linuxhint.com/vim-vundle-tutorial/)       
+    -   [`PluginSearch` error](https://github.com/VundleVim/Vundle.vim/issues/599) 
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
--   (**Important**) Compile vim with x-clip support
+-   ❗️(**Important**) Compile vim with x-clip support
     -   [Commands for compilation](https://stackoverflow.com/questions/11416069/compile-vim-with-clipboard-and-xterm)
     -   [Specifying the necessary flags](https://superuser.com/questions/235505/compiling-vim-with-xterm-clipboard-support)
+-   Refer [this link](https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source) to compile vim from source so that it is compatible with YouCompleteMe
 -   Backspace not working: Add `set backspace=indent,eol,start` to ~/.vimrc
--   Add clipboard functionality
 
 
 **Plugins**
