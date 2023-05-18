@@ -132,6 +132,27 @@
     git fetch upstream
     git merge upstream/master
     ```
+-   `HEAD`
+-   Stash
+-   Merge
+-   Rebase
+-   Reset
+-   Revert
+-   Modifying/ reverting commits
+    -   Undo previous commit
+    ```
+    git reset HEAD~
+    # make necessary changes and commit again
+    ```
+    -   Checkout file to previous state and amend commit
+    ```
+    git checkout HEAD~ file.txt
+    git commit --amend
+    ```
+    -   Hard 'delete' commits
+    `git reset --hard [commit_id_start]..[commit_id_end]`
+    -   [Source 1](https://remarkablemark.org/blog/2017/09/19/revert-file-after-commit/), [2](https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit)
+    
 
 **Pushing from a local repository branch (master) to a (my) GitHub
 repository (set as remote origin) branch (main)**
