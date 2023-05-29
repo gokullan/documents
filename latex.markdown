@@ -70,8 +70,49 @@ Latex
     -   \\medskip or \\bigskip to give line break between ordinary
         paragraphs
 
+-   `\textsuperscript{}` or `\textsubscript{}`
+
 -   Latex Graphics
-    - [Tutorial](https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_1)%E2%80%94Basic_Drawing)
+    -   [Tutorial](https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_1)%E2%80%94Basic_Drawing)
+    
+    -   Flowchart
+        ```latex
+        \documentclass{article}
+        \usepackage{tikz}
+        \usetikzlibrary{shapes.geometric, arrows}
+        
+        % use `tikzstyle` to pre-define styles for elements
+        % \tikzstyle{element_name} = [... styles ...]
+        \tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
+        \tikzstyle{arrow} = [thick,->,>=stealth]
+        
+        \begin{document}
+        
+        % node `distance` refers to the distance between the centers of 2 (consecutive) nodes
+        % `inner sep` and `outer sep` are analogous to padding and margin respectively
+        \begin{tikzpicture} [node distance=3cm, style={inner sep=.5cm,outer sep=0}]
+        % \node (node_name) [.. styles ..] {text_inside}
+        \node (p1) [process, align=center] {MIMIC-IV ICU Admissions\\66239};
+        \node (p2) [process, below of=p1, align=center] {Vitals \& Ventilator data present\\ \textbf{34143}};
+        \node (p3) [process, below of=p2, align=center] {Age data present\\34143};
+        \node (p4) [process, right of=p1, xshift=3cm, align=center] {Blood Gas Analysis present\\26073};
+        \node (p5) [process, right of=p2, xshift=3cm, align=center] {Comorbidities present\\26073};
+        \node (p6) [process, right of=p3, xshift=3cm, align=center] {Blood count present\\22609};
+        
+        \draw [arrow] (p1) -- (p2);
+        \draw [arrow] (p2) -- (p3);
+        % arrow from p3 goes up; stops at 1cm left of p4 and extends to p4 horizonatally
+        \draw [arrow] (p3) -| ([xshift=-1cm]p4.west) -- (p4.west);
+        \draw [arrow] (p4) -- (p5);
+        \draw [arrow] (p5) -- (p6);
+        \end{tikzpicture}
+        
+        \end{document}
+        ```
+        -   Use `align=center` in node style to allow newlines in the textual content
+        -   [Relative positioning of nodes using the `positioning` library](https://tex.stackexchange.com/questions/51228/how-to-increase-the-horizontal-distance-between-nodes)
+        -   [Padding and margin for nodes](https://tex.stackexchange.com/questions/136391/tikz-remove-margin-padding-border-around-nodes-containing-images)
+        -   Changing arrow-direction - [Example](https://tex.stackexchange.com/questions/388079/how-to-change-direction-of-arrow-tikz)
 
     -   Drawing shapes/ persons -- tikz
 
