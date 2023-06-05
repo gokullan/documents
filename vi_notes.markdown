@@ -272,6 +272,10 @@ Commands
     -   [Tutorial](https://linuxhint.com/vim-vundle-tutorial/)       
     -   [`PluginSearch` error](https://github.com/VundleVim/Vundle.vim/issues/599) 
 
+-  Viewing Variables
+   -    `:set all`
+   -    [Variables associated with a plugin](https://stackoverflow.com/questions/62943877/how-to-view-all-variables-associated-with-a-plugin-in-vim)
+
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
 -   ❗️(**Important**) Compile vim with x-clip support
