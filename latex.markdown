@@ -129,6 +129,16 @@ Latex
 
 -   Tables
 
+    ```latex
+    \usepackage{array}
+    ...
+    \begin{tabular}{|c|m{4cm}|}  % 2nd column should have a width of 4 cm with contents placed in the middle of each corresponding cell
+        \hline
+        cell 1 & \parbox{4cm}{This is the\\2nd cell\\I can choose the line breaks.}
+
+    \end{tabular}
+    ```
+    -   Learn more [here](https://www.overleaf.com/learn/latex/Tables)
     -   Diagonal box --
         <https://tex.stackexchange.com/questions/27193/latex-table-cell-with-a-diagonal-line-and-2-sub-cells>
 
