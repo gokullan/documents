@@ -64,11 +64,33 @@ Latex
     -   newline \\\\
     -   <https://tex.stackexchange.com/questions/208442/how-to-put-two-newlines-in-latex>
 
--   Spacing
+-   Alignment and Spacing
 
     -   space \~
     -   \\medskip or \\bigskip to give line break between ordinary
         paragraphs
+    -   `\hspace{2mm}` for inline spacing (horizontal)
+    -   `\hfill some content` pushes content to the right
+    -   `\raggedright` and `raggedleft` for left and right alignment respectively (?)
+
+-   Custom commands
+    ```latex
+    \newcommand{\mycommand}[n] {  % n denotes the number of args to the command
+        % use #i to access the ith argument 
+    }
+    ```
+
+-   Parbox
+    -   Below snippet to create a parbox with custom line-spacing
+    ```latex
+    \parbox{width}{\linespread{1.5}\selectfont ...}
+    ```
+
+-   Adding icons
+    ```latex
+    \usepackage{fontawesome5}
+    \faGithub
+    ```
 
 -   `\textsuperscript{}` or `\textsubscript{}`
 
@@ -100,7 +122,7 @@ Latex
         \node (p6) [process, right of=p3, xshift=3cm, align=center] {Blood count present\\22609};
         
         \draw [arrow] (p1) -- (p2);
-        \draw [arrow] (p2) -- (p3);
+        #\draw [arrow] (p2) -- (p3);
         % arrow from p3 goes up; stops at 1cm left of p4 and extends to p4 horizonatally
         \draw [arrow] (p3) -| ([xshift=-1cm]p4.west) -- (p4.west);
         \draw [arrow] (p4) -- (p5);
@@ -113,6 +135,11 @@ Latex
         -   [Relative positioning of nodes using the `positioning` library](https://tex.stackexchange.com/questions/51228/how-to-increase-the-horizontal-distance-between-nodes)
         -   [Padding and margin for nodes](https://tex.stackexchange.com/questions/136391/tikz-remove-margin-padding-border-around-nodes-containing-images)
         -   Changing arrow-direction - [Example](https://tex.stackexchange.com/questions/388079/how-to-change-direction-of-arrow-tikz)
+
+    -   Tikz
+        -   [Manual](https://tikz.dev/tikz-shapes) (same as ~/Documents/latex/tikzpgfmanual.pdf)
+        -   [Positioning Tikz pictures](https://tex.stackexchange.com/questions/123895/positioning-tikz-pictures)
+        -   [Filling shapes with images](https://tex.stackexchange.com/questions/219356/how-to-create-a-rectangle-filled-with-image-using-tikz)
 
     -   Drawing shapes/ persons -- tikz
 
