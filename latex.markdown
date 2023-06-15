@@ -20,6 +20,11 @@ Latex
 
 -   Diagonal dots: \\ddots
 
+-   Symbols
+    -   Hadamard: \odot ($\odot$)
+    -   Tilde on top: ~{x} ($\~{x}$)
+    -   Hat (cap): \hat{x} ($\hat{x}$) 
+
 -   Listing
 
     -   Numbered:
@@ -71,7 +76,7 @@ Latex
         paragraphs
     -   `\hspace{2mm}` for inline spacing (horizontal)
     -   `\hfill some content` pushes content to the right
-    -   `\raggedright` and `raggedleft` for left and right alignment respectively (?)
+    -   `\raggedright` and `\raggedleft` for left and right alignment respectively (?)
 
 -   Custom commands
     ```latex
