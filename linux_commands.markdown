@@ -254,6 +254,38 @@ sudo chown -R www-data: /var/www/html/d9
     -   *sudo chmod -R -f 777
         *[*https://superuser.com/questions/451475/chmod-doesnt-work*](https://superuser.com/questions/451475/chmod-doesnt-work)
 
+-   Linux Mint installation
+    -   `sudo apt update`
+    -   Apache: `sudo apt install apache2`
+    -   PHP: 
+        -   Add `ppa:ondrej/php` repository: `sudo apt-add-repository ppa:ondrej/php` 
+        -   `apt-cache policy php7.4`
+        -   `sudo apt install php7.4=[]`, where `[]` is one of the entries in the `Version table` section of the previous command's output
+        -   `sudo apt install php7.4-mysqli`
+        -   Refer [1](https://stackoverflow.com/questions/40801460/how-to-install-an-older-version-of-php-using-apt-get), [2](https://askubuntu.com/questions/1424971/how-to-upgrade-php-to-7-4-30)
+    -   MySQL
+        -   `sudo apt install mysql-server-8.0=[]`
+    -   Setting up a Codeigniter project
+        -   Extract the project into `/var/www/html/` (Let's say the name of the project is `myProject`)
+        -   Set up permissions
+            -   Refer [here](https://serverfault.com/questions/200650/what-is-sudo-chown-r-www-datawww-data)
+        -   Change base URL
+        -   Configure Database
+        -   Configure Apache
+            -   `vim /etc/apache2/sites-available/myProject.conf`
+            ```
+            <VirtualHost *:80>
+            ServerName 127.0.0.1
+            ServerAlias 127.0.0.1
+            DocumentRoot /var/www/html/myProject
+            <Directory /var/www/html/myProject>
+                  Allowoverride All
+            </Directory>
+            </VirtualHost>
+            ```
+        -   To run the project (application), hit the base URL in the browser
+        -   References [1](https://www.howtoforge.com/tutorial/ubuntu-codeigniter/), [2](https://computingforgeeks.com/install-codeigniter-php-framework-on-ubuntu/)
+
 -   Starting MATLAB
 
 export MESA_LOADER_DRIVER_OVERRIDE=i965; matlab
