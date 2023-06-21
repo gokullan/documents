@@ -13,6 +13,12 @@ Linux Commands
 
 */path/to/yourscript.sh*
 
+-   To change shell (`chsh`)
+    -   Use `cat /etc/shells` to list all available shells
+    -   `ps -p $$` to find the current shell instance
+    -   For example, to change to `sh`, do `chsh -s /bin/sh`
+    -   Restart for changes to take effect.
+
 -   Change to root
 
 *sudo -i*
@@ -272,6 +278,7 @@ sudo chown -R www-data: /var/www/html/d9
         -   Change base URL
         -   Configure Database
         -   Configure Apache
+            -   (**IMPORTANT**) In `etc/apache2/sites-enabled/000-default`, change `AllowOverride None` to `AllowOverride All` (refer [here](https://stackoverflow.com/questions/14783666/codeigniter-htaccess-and-url-rewrite-issues/14807463#14807463))
             -   `vim /etc/apache2/sites-available/myProject.conf`
             ```
             <VirtualHost *:80>
@@ -283,7 +290,7 @@ sudo chown -R www-data: /var/www/html/d9
             </Directory>
             </VirtualHost>
             ```
-        -   To run the project (application), hit the base URL in the browser
+        -   To run the project (application), hit the base URL (or is it the name of the project folder?) in the browser
         -   References [1](https://www.howtoforge.com/tutorial/ubuntu-codeigniter/), [2](https://computingforgeeks.com/install-codeigniter-php-framework-on-ubuntu/)
 
 -   Starting MATLAB
