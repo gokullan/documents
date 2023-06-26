@@ -19,6 +19,8 @@ Linux Commands
     -   For example, to change to `sh`, do `chsh -s /bin/sh`
     -   Restart for changes to take effect.
 
+-   View CPU info: `lscpu` or `cat /proc/cpuinfo`
+
 -   Change to root
 
 *sudo -i*
@@ -363,6 +365,9 @@ pactl load-module module-loopback (pactl =\> pulse audio control)
 -   Indents in LibreOffice Writer (keyboard shortcuts)
 
 <https://askubuntu.com/questions/880369/how-to-increase-decrease-indentation-in-libreoffice>
+
+-   Checking Ubuntu version in Mint 
+    `cat /etc/upstream-release/lsb-release`
 
 -   Installing packages
 
