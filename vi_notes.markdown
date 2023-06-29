@@ -234,6 +234,8 @@ Commands
 
     -   <https://developer.ibm.com/tutorials/au-vitips/>
 
+-   To use mouse: `set mouse=a`
+
 -   Disable preview
 
     -   <https://stackoverflow.com/questions/15962421/how-can-i-disable-scratch-preview-window>
