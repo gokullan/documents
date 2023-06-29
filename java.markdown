@@ -24,6 +24,7 @@
     ```
     -   To access an element: `list.get(index)`
     -   To set the value of an element: `list.set(index, value)`
+    -   To make a copy: `ArrayList<Integer> arr_copy = new ArrayList<>(original);`
 
 -   HashMap
 
@@ -40,6 +41,12 @@
 
     -   Iterating through HashMap
 
+-   Queue
+    ```java
+    import java.util.*;
+
+    Queue<Integer> my_queue = new LinkedList<Integer>();
+    ```
 -   Finding maximum/ minimum
 
     -   import java.util.**Collections**
@@ -70,6 +77,16 @@
 
         -   More on initialization --
             <https://www.techiedelight.com/initialize-set-java/>
+
+-  Printing a class
+   -   Add a `toString` method
+   ```java
+   @Override
+   public String toString() {
+        return "required string";
+   }
+   ```
+   -   Refer [here](https://stackoverflow.com/questions/29140402/how-do-i-print-my-java-object-without-getting-sometype2f92e0f4)
 
 -  Packages 
    -   To create a user-defined package, begin the Java file with `package mypackagename;` and save the file in a directory named `mypackagename`
