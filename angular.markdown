@@ -1,4 +1,10 @@
-Angular2 Notes
+# Angular
+
+## CLI
+-   `ng new project-name`
+-   `ng serve`
+-   `ng generate component component_name`
+
 
 -   Typescript
 
@@ -28,67 +34,78 @@ Angular2 Notes
 
 -   When importing TypeScript files, no need to put '.ts' at the end
 
--   Components
+## Modules
+-   An angular application consists of many modules
+-   Every application has at least one (root) module - `app.module.ts`
+-   Each module is made up of components and services
 
-    -   Application is built out of various components
+## Components
 
-    -   app.component is the root component
+-   `main.ts` is the entry point for the angular application (followed by `app.module.ts`)
+-   Application is built out of various components
+-   Each components controls a portion of the view on the browser
 
-    -   app.module.ts bootstraps the app component
+-   app.component is the root component
 
-    -   Each component consists of 3 parts
+-   app.module.ts bootstraps the app component
 
-        -   componentName.component.ts (logic)
+-   Each component consists of 3 parts
 
-        -   componentName.component.html (view/template)
+    -   componentName.component.ts (logic)
 
-        -   componentName.component.css (styles)
+    -   componentName.component.html (view/template)
 
-    -   ng generate component component_name
+    -   componentName.component.css (styles)
 
-    -   Nested components
+-   It also has some metadata attached to it by means of the `@Component` decorator (which differentiates a normal class from a component class); a decorator is a function that attaches information to the class right below it.
+    ```typescript
+    @Component({
+        selector: 'tag-name'
+        templateUrl: './name.component.html',
+        // template: `HTML code`
+        styleUrls: ['./name.component.css']
+        // styles: [`CSS code`]
+    })
+    ```
+-   Everytime a new component is created, the module needs to be made aware of this - this is done through import and declaration in `@NgModule` (`ng g` does this automatically)
+-   `selector` can be specified in 2 other ways - `'.class-name'` (to use as HTML class) and `'[attribute]'` (to use as HTML attribute) 
+-   Nested components
 
-        -   import { ComponentClassName } from './\<path\>/index'
-            (inside the parent component)
+    -   import { ComponentClassName } from './\<path\>/index'
+        (inside the parent component)
 
-            -   The index.ts exports everything in
-                ./\<path\>/something.component.ts
+        -   The index.ts exports everything in
+            ./\<path\>/something.component.ts
 
-        -   Add 'directives: \[ComponentClassName\]' in the \@Component
-            decorator of the parent component
+    -   Add 'directives: \[ComponentClassName\]' in the \@Component
+        decorator of the parent component
 
 -   CSS files (for the entire application, if any) should be put inside
     the 'public' directory and can be referenced in the index.html file
     as "/styles.css"
 
 -   **Data Flow**
-
     -   **Into the view**
-
         -   Interpolation (evaluate content inside curly braces)
-
             -   cannot contain assignments
-
-            -   cannot access global JS variables
+            -   cannot access global JS variables (like `window`)
 
         -   Property binding
-
             -   Attribute (HTML) vs. Property (DOM)
-
                 -   Attributes initialize DOM properties
-
                 -   Once attribute is initialized, it cannot be changed
+                -   `HTMLElement.getAttribute('value')` is different from `HTMLElement.value`. The former will show the initial value even after the value is changed. See [this](https://stackoverflow.com/questions/11973678/difference-between-element-value-and-element-getattributevalue) for more details
 
-            -   \<input \[id\]="\<someVar\>"\> (OR) \<input
-                bind-disabled="\<boolVar\>"\>
+            -   ```html
+                <!-- interpolation -->
+                <input id="{{someVar}}">
 
-                -   [How to set disabled attribute for
-                    AngularJS?]{.mark}
+                <!-- property-binding -->
+                <input [id]="someVar">  <!-- or <input bind-id="someVar"> -->
+                <input [disabled]="false">  <!-- interpolation cannot be used for this -->
+                ```
 
-                -   [When to use "{{ varName }}" and when to use just
-                    "varName" in AngularJS?]{.mark}
-
-                -   <https://stackoverflow.com/questions/18487480/angular-expression-in-attribute>
+            -   <https://stackoverflow.com/questions/18487480/angular-expression-in-attribute>
 
         -   Class binding
 
