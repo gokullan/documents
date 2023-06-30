@@ -84,159 +84,295 @@
     the 'public' directory and can be referenced in the index.html file
     as "/styles.css"
 
--   **Data Flow**
-    -   **Into the view**
-        -   Interpolation (evaluate content inside curly braces)
-            -   cannot contain assignments
-            -   cannot access global JS variables (like `window`)
+## Data Flow
+-   **Into the view** (component class -> component template)
+    -   Interpolation (evaluate content inside curly braces)
+        -   cannot contain assignments
+        -   cannot access global JS variables (like `window`)
 
-        -   Property binding
-            -   Attribute (HTML) vs. Property (DOM)
-                -   Attributes initialize DOM properties
-                -   Once attribute is initialized, it cannot be changed
-                -   `HTMLElement.getAttribute('value')` is different from `HTMLElement.value`. The former will show the initial value even after the value is changed. See [this](https://stackoverflow.com/questions/11973678/difference-between-element-value-and-element-getattributevalue) for more details
+    -   Property binding
+        -   Attribute (HTML) vs. Property (DOM)
+            -   Attributes initialize DOM properties
+            -   Once attribute is initialized, it cannot be changed
+            -   `HTMLElement.getAttribute('value')` is different from `HTMLElement.value`. The former will show the initial value even after the value is changed. See [this](https://stackoverflow.com/questions/11973678/difference-between-element-value-and-element-getattributevalue) for more details
 
-            -   ```html
-                <!-- interpolation -->
-                <input id="{{someVar}}">
+        -   ```html
+            <!-- interpolation -->
+            <input id="{{someVar}}">
 
-                <!-- property-binding -->
-                <input [id]="someVar">  <!-- or <input bind-id="someVar"> -->
-                <input [disabled]="false">  <!-- interpolation cannot be used for this -->
-                ```
+            <!-- property-binding -->
+            <input [id]="someVar">  <!-- or <input bind-id="someVar"> -->
+            <input [disabled]="false">  <!-- interpolation cannot be used for this -->
+            ```
 
-            -   <https://stackoverflow.com/questions/18487480/angular-expression-in-attribute>
+        -   <https://stackoverflow.com/questions/18487480/angular-expression-in-attribute>
 
-        -   Class binding
+    -   Class binding
 
-            -   Regular class attribute becomes a dummy in the presence
-                of class binding: \[class\]="\<someVar\>" OR
-                \[class.className\] = "\<boolVar\>"
+        -   Regular class attribute becomes a dummy in the presence of class binding
+        ```html
+        <!-- only the class (value) of class_variable is applied -->
+        <div class='class-1' [class]='class_variable'>  
 
-            -   \[ngClass\]="\<classObj\>", where classObj is an object
-                of the form,
+        <!-- applying classes conditionally -->
 
-                { "className": bool }
+        <!-- single class -->
+        <div [class.class-1]="expression_that_evals_to_bool">
 
-        -   Style binding
+        <!-- multiple classes -->
+        <div [ngClass]="object">
+        <!--
+        where object is of the format
+        {
+            "class-1": true;
+            "class-2": false;
+            ...
+        }
+        -->
+        ```
 
-            -   \[style.propertyName\]="\<someVar\>"
+    -   Style binding
+        ```html
+        <h2 [style.propertyName]="expression_returing_suitable_string"> Hello </h2>
 
-            -   \[ngStyle\]="\<styleObj\>", where styleObj is an object
-                of the form,
+        <h3 [ngStyle]="styleObj"> World </h3>
+        <!--
+        where styleObj is an object of the form,
+        {
+            property: "value" 
+        }
+        -->
+        ```
 
-                { property: "value" }
+-   **Out of the view** (template -> class)
 
-    -   **Out of the view**
+    -   Event binding
+    ```html
+    <button (eventName) = "func($event)"></button>
+    <!--
+    $event is a special variable that provides
+    information about the DOM event that was raised
+    -->
+    <button (eventName) = "someVar='Hello, World!'"></button>
+    ```
 
-        -   Event binding
+    -   Template reference variables
+        -   to easily pass an HTML element into the class
+        ```html
+        <input #myInput... >
+        <button (click)=someFunc(myInput.value)></button>
+        ```
+        -   `myInput` can be passed as an argument (to a function)
+            from the HTML page
+        -   All DOM properties of this element can be accessed using
+            `myInput`
 
-            -   (eventName) = "func(\$event)" (OR) (eventName) =
-                "someVar='Hello, World!' "
+-   **2-way data binding**
+    -   Data in the model and view (if bound, as in the case of form inputs) need to be consistent, (i.e.), if there is a change in the model (class property), it should be reflected in the view and vice-versa.
+    -   To use `ngModel`, go to `app.module.ts`:
+        -   import forms module
+        -   add FormsModule to the imports array
 
-                -   \$event is a special variable that provides
-                    information about the DOM event that was raised
+    ```html
+    <input [(ngModel)]="varName">
+    ``` 
+    where `varName` is a property defined in the component class
 
-        -   Template reference variables
+## Pipes 
+-   {{ expr | pipe}} -- to transform data in the view
 
-            -   \<input **#myInput** \... \>
+-   String pipes
+    -   lowercase
+    -   uppercase
+    -   titlecase
+    -   slice:start:end-1 (0-based indexing)
 
-            -   myInput can be passed as an argument (to a function)
-                from the HTML page
+-   JSON pipe `{{ object_var | json }}`
 
-            -   All DOM properties of this element can be accessed using
-                myInput
+-   Number pipe
+    ```html
+    {{ 5.678 | number:'3.2-3' }}
+    <!-- number:'min-int-digits.min-digits-max-digits' -->
+    ```
 
-    -   2-way data binding
+-   Percent pipe `{{ 0.25 | percent }}`
 
-        -   app.module.ts
+-   Currency pipe `{{ 25 | currency:'GBP':'code'}}`
+    -   If 'code' is specified, output is GBP25; else the currency symbol is displayed before the number (GBP stands for Great Britain Pound)
 
-            -   import forms module
+-   Date pipe
 
-            -   add FormsModule to the imports array
+    -   `{{ date | date:short }}` (where the 1st `date` is a Date
+        object)
 
-        -   \<input \[(ngModel)\]="varName"\>
-
--   **Pipes** {{ expr \| pipe}} -- to transform data in the view
-
-    -   String pipes
-
-        -   lowercase
-
-        -   uppercase
-
-        -   titlecase
-
-        -   slice:start:end-1 (0-based indexing)
-
-    -   Number pipe {{ 5.678 \|
-        number:'\<min-digits\>.\<min-digits\>-\<max-digirs\>' }} ({{
-        5.678 \| number:'3.2-3' }})
-
-    -   Percent pipe {{ 25 \| percent }}
-
-    -   Currency pipe {{ 25 \| currency: 'GBP': 'code'}}
-
-    -   Date pipe
-
-        -   {{ date \| date:short }} (where the 1^st^ date is a Date
-            object)
-
+    -   Other args to date pipe   
         -   shortDate
-
         -   shortTime
-
         -   *short* can be replaced with *medium* or *long*
 
--   **Service** -- a class with a specific task (filename.service.ts;
+## Directives
+-   Custom HTML attributes provided by Angular
+-   Some useful directives
+    -   `ngClass` (see class binding)
+    -   `ngStyle` (see style binding)
+    -   `ngModel` (see 2-way data binding)
+    -   `ngIf`
+        -   **Note**: `ng-template` tag is a container for elements that can be used by `ngIf`
+    ```html
+    <h2 *ngIf="exp_returning_true_or_false; else spanish">Hello!</h2>
+    <ng-tempate>
+        <h2 #spanish>Hola!</h2>
+    </ng-tempate>
+
+    <!-- alternate syntax -->
+    <div *ngIf="boolean_exp; then trueBlock; else falseBlock"></div>
+    <!-- where trueBlock and falseBlock are template references to elements defined using ng-template -->
+    ```
+    -   `ngSwitch`
+    ```html
+    <div [ngSwitch]="myVar">
+        <div *ngSwitchCase="value1"> Hi! </div>
+        <div *ngSwitchCase="value2"> Hola! </div>
+        <div *ngSwitchDefault="value3"> Hello! </div>
+    </div>
+    ```
+    -   `ngFor`
+    ```html
+    <!-- elementList is an array defined in the component class -->
+    <ul *ngFor="let element of elementList; index as i">
+        <li>{{ i }} - {{ element }}</li>
+    </ul>
+    <!--
+    other keywords to use in ngFor (keyword as k)
+    Boolean return-type (couple with ngIf):
+    -   first 
+    -   last
+    -   odd
+    -   even
+    -->
+    ```
+
+## Component Interaction
+
+-   @Input and @Output decorators ([Refer](https://angular.io/guide/inputs-outputs))
+    -   @Input
+        -   (For child) To accept input from parent
+        ```html
+        <!-- inside parent component template -->
+        <child-comp [parentData]="variable_from_parent_class"><child-comp>
+        ```
+        ```typescript
+        // inside child component class
+        import { Input, ... } from '@angular/core'
+        
+        Class ChildComp {
+            @Input() public parentData = someAppropriateInitialization;
+            // @Input('parentData') public newName = ... ;
+            // use parentData (or newName) as needed inside the template
+        }
+        ```
+    -   @Output
+        -   For child to send out events to parent
+        ```typescript
+        // emit event from child
+        @Output() public childEvent = new EventEmitter();
+        ...
+        childEvent.emit(message_to_send);
+        ```
+        ```html
+        <!-- Catch the event in the place where the child component is used -->
+        <child-comp (childEvent)="message_from_child=$event"></child-comp>
+        ```
+
+-   2-way binding --
+    <https://stackoverflow.com/questions/41464871/update-parent-component-property-from-child-component-in-angular-2>
+
+-   Comprehensive --
+    <https://stackoverflow.com/questions/37587732/how-to-call-another-components-function-in-angular2>
+
+-   Change Detection --
+    <https://www.sitepoint.com/change-detection-angular/>
+
+## Service 
+-   Principles used
+    -   Do not Repeat Yourself (DRY)
+    -   Single Responsibility Principle
+
+-   a class with a specific task (filename.service.ts;
     class: filenameService)
 
-    -   ng g s \<service\>
+-   Creating and using a service
+    -   `ng g s service-name`
+        -   `@Injectable` decorator is present inside `serviceName.service.ts` to indicate that the service itself might have injectable dependencies.
+    -   Register service with injector
+        -   Better to register in `AppModule` in the `providers` property (metadata)
+    -   Declare as dependency in required component
+    ```typescript
+    constructor(private _myService: myService) {}
+    // vs-code automatically does an import (?)
 
-    -   Applications
+    ngOnInit() {
+        // use _myService to populate any component property
+    }
+    ```
 
-        -   To share data
+-   Applications
 
-        -   Implement application logic (which can be used by various
-            components)
+    -   To share data
 
-        -   External interaction (connecting to DB)
+    -   Implement application logic (which can be used by various
+        components)
 
-    -   Dependency Injection
+    -   External interaction (connecting to DB)
 
-        -   Assume we have 3 classes -- Engine, Tyre and Car. Car
-            depends on Engine and Tyre classes
+-   Dependency Injection
 
-        -   Code without DI
+    -   Assume we have 3 classes -- Engine, Tyre and Car. Car
+        depends on Engine and Tyre classes
 
-            -   The Car class creates instances of Engine and Tyre in
-                its constructor
+    -   Code without DI
 
-            -   Code is not flexible
+        -   The Car class creates instances of Engine and Tyre in
+            its constructor
 
-                -   If the parameters to the constructors of Engine
-                    and/or Tyre change, the change has to be made in the
-                    code of the Car class as well
+        -   Code is not flexible
 
-            -   Testing is difficult
+            -   If the parameters to the constructors of Engine
+                and/or Tyre change, the change has to be made in the
+                code of the Car class as well
+            ```python
+            class Car:
+                def __init__(self)
+                    self.engine = new Engine();
+                    self.tyre = new Tyre();
+            ```
 
-        -   DI as a design pattern
+        -   Testing is difficult
 
-            -   Pass dependencies as parameters
+    -   DI as a design pattern
 
-            -   Disadvantage: We need to manually create all
-                dependencies for a class(?) as they need to be passed as
-                parameters. This is difficult if the number of
-                dependencies are large (and recursive)
+        -   Pass dependencies (from external sources) as parameters to a class rather than creating them itself.
+            ```python
+            class Car:
+                def __init__(self, engine, tyre)
+                    self.engine = engine;
+                    self.tyre = tyre;
+            ```
 
-        -   DI as a framework (provided by Angular)
+        -   Disadvantage: We need to manually create all
+            dependencies for a class(?) as they need to be passed as
+            parameters. This is difficult if the number of
+            dependencies are large (and recursive, (i.e.), a dependency itself has dependencies)
 
-            -   Regsiter dependencies in an Injector
+    -   DI as a framework (provided by Angular)
 
-            -   **Define service class** (use \@Injectable decorator
-                since a service may have another service as dependency)
-                **-\>** **register with injector** (Provider metadata)
-                **-\> declare as dependency wherever required**
+        -   Regsiter dependencies in an Injector
+            (Injectore is like a container for (of?) dependencies)
+
+        -   **Define service class** (use \@Injectable decorator
+            since a service may have another service as dependency)
+            **-\>** **register with injector** (Provider metadata (injector 'provides' services to required components))
+            **-\> declare service as dependency wherever required**
 
 -   Lifecycle Hooks
 
@@ -248,22 +384,6 @@
         -   <https://indepth.dev/posts/1494/complete-guide-angular-lifecycle-hooks>
 
         -   <https://blog.logrocket.com/angular-lifecycle-hooks/>
-
--   Component Interaction
-
-    -   \@Input and \@Output decorators --
-        <https://angular.io/guide/inputs-outputs>
-
-    -   2-way binding --
-        <https://stackoverflow.com/questions/41464871/update-parent-component-property-from-child-component-in-angular-2>
-
-    -   Comprehensive --
-        <https://stackoverflow.com/questions/37587732/how-to-call-another-components-function-in-angular2>
-
-    -   Change Detection --
-        <https://www.sitepoint.com/change-detection-angular/>
-
-    -   
 
 -   HTTP and Observables (Observable =\> HTTP response)
 
