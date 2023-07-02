@@ -4,7 +4,7 @@
 -   `ng new project-name`
 -   `ng serve`
 -   `ng generate component component_name`
-
+    -   `ng g c parent/child --flat`: generates component `child` under (the existing) component parent
 
 -   Typescript
 
@@ -385,27 +385,60 @@
 
         -   <https://blog.logrocket.com/angular-lifecycle-hooks/>
 
--   HTTP and Observables (Observable =\> HTTP response)
+## Interface
+```typescript
+export interface Test {
+    id: number,
+    name: string,
+    // ...
+}
+```
 
-    -   app.module.ts
+## HTTP and Observables (Observable =\> HTTP response)
 
-        import { HTTPClientModule } \...
-
-        Include HTTPClientModule in the imports property
-
+-   Observable: A sequence of items that arrive asynchronously over time
+    -   `RxJS` is the library used to work with Observables
+-   Inside `app.module.ts`, `import { HTTPClientModule } ...` and include HTTPClientModule in the imports property
+-   Steps
     -   In the service, provide the HTTPClient class in the constructor
         and make a HTTP get request
 
     -   Cast observable into suitable format
+    ```typescript
+    // inside the service class
+    // import statements ...
+    import 'rxjs/add/operator/catch'
+    import 'rxjs/add/operator/throw'
+    export class MyService() {
+        constructor(private http: HttpClientModule) {};
+        // ...
+        // Test is an interface
+        getData() : Observable<Test[]> {
+            // cast Observable into appropriate type
+            return this.http.get<Test[]>(url)
+                        .catch(this.errorHandler);
+        }
 
-    -   Subscribe to observable
-
-    -   Using promises --
-        <https://stackoverflow.com/questions/50303033/how-to-return-a-promise-from-subscribe-in-angular-5>
-
-    -   
-
--   
+        errorHandler(error: HttpErrorResponse) {
+            Observable.throw(error.message || "Server Error");
+        }
+    }
+    ```
+    -   Subscribe to observable (observable doesn't provide data unless subscribed)
+    ```typescript
+    // inside component class
+    ngOnInit() {
+        this._myService.getData()
+            .subscribe(data => {
+                // do something with data
+            },
+            error => {
+                // error handler
+            });
+    }
+    ```
+-   Using promises --
+    <https://stackoverflow.com/questions/50303033/how-to-return-a-promise-from-subscribe-in-angular-5>
 
 Doubts
 
