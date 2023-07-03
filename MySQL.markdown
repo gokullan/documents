@@ -2,6 +2,18 @@ MySQL
 
 -   sudo -- u root -p
 -   Ctrl + L to clear screen
+-   To disable modes
+    ```sql
+    /* view modes */
+    SELECT @@GLOBAL.sql_mode;
+    ```
+    -   To disable a mode, create a file `disable_strict_mode.cnf` under `/etc/mysql/conf.d`
+    -   Add the following
+    ```
+    [mysqld]
+    sql_mode = "[all available modes, but without the one you want to disable]"
+    ```
+    -   [Reference](https://stackoverflow.com/a/45714242/13711617)
 
 Creating a new user for a database
 
