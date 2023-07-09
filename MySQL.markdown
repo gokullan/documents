@@ -592,3 +592,9 @@ To go over:
 -   "keep table"
 
 -   varchar2
+
+## Doubts
+-   What is present at the leaf nodes of a B-tree (index)?
+-   Function-based indices (or generated column)
+-   Index-only scan
+-   Multi-column index
