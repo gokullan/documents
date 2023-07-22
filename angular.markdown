@@ -26,6 +26,15 @@
             \<properties and methods\> }
 
         -   car: Car = new Car()
+        -   Constructor shorthand
+        ```typescript
+        class Sample {
+            constructor(
+                private prop1: string,
+                // ...
+            ) {}
+        }
+        ```
 
     -   Application is written is TypeScript and converted to JavaScript
         (and outputs it in the distribution folder)
@@ -33,6 +42,14 @@
         -   Browsers cannot understand TypeScript
 
 -   When importing TypeScript files, no need to put '.ts' at the end
+-   Interfaces
+    -   Dynamic fields
+    ```typescript
+    interface Example {
+        [prop : string] : string
+        // expects a string as key and string as value
+    }
+    ```
 
 ## Modules
 -   An angular application consists of many modules
@@ -284,6 +301,31 @@
         <child-comp (childEvent)="message_from_child=$event"></child-comp>
         ```
 
+    -   [Using subjects](https://angular.io/guide/component-interaction#parent-and-children-communicate-using-a-service)
+    ```typescript
+    sampleSubject = new Subject<string>(); 
+    // create Observable stream
+    sampleSubject$ = this.sampleSubject.asObservable();
+    // set value
+    this.sampleSubject.next("Hello!");
+
+    // subscribe wherever required
+    // to see the new changes
+    this.sampleSubject$.subscribe(
+        data => {
+            // do whatever required ...
+        }
+    )
+    ```
+
+-   Asynchronous functions
+    ```typescript
+    // using `lastValueFrom`
+    asyc sampleFunction() {
+        let response = await lastValueFrom(anotherAsyncFunction());
+    }
+    ```
+
 -   2-way binding --
     <https://stackoverflow.com/questions/41464871/update-parent-component-property-from-child-component-in-angular-2>
 
@@ -294,7 +336,7 @@
     <https://www.sitepoint.com/change-detection-angular/>
 
 ## Service 
--   Principles used
+-   Principle/s used
     -   Do not Repeat Yourself (DRY)
     -   Single Responsibility Principle
 
@@ -397,7 +439,7 @@ export interface Test {
 ## HTTP and Observables (Observable =\> HTTP response)
 
 -   Observable: A sequence of items that arrive asynchronously over time
-    -   `RxJS` is the library used to work with Observables
+-   `RxJS` is the library used to work with Observables
 -   Inside `app.module.ts`, `import { HTTPClientModule } ...` and include HTTPClientModule in the imports property
 -   Steps
     -   In the service, provide the HTTPClient class in the constructor
@@ -440,6 +482,11 @@ export interface Test {
 -   Using promises --
     <https://stackoverflow.com/questions/50303033/how-to-return-a-promise-from-subscribe-in-angular-5>
 
+-   Subscribe or use service object directly? (See 
+    [here](https://stackoverflow.com/questions/45296967/using-service-data-in-components-template-is-it-a-good-practice))
+
+-   Constructor vs. `ngOnInit` for subscribing?  
+
 Doubts
 
 -   ngModel
@@ -447,4 +494,5 @@ Doubts
 -   Sharing data between siblings --
     <https://stackoverflow.com/questions/43940351/how-do-i-share-data-between-sibling-components-in-angular>
 
--   
+-   Dependency injection - injecting services inside root component creates only one service instance?
+    (Even if that service is used as dependency for other services?)
