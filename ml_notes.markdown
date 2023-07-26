@@ -789,6 +789,13 @@ ML Implementation notes
 -   Histogram: `plt.hist(data, bins)`
     -   [Histogram plot from a list of strings](https://stackoverflow.com/questions/28418988/how-to-make-a-histogram-from-a-list-of-strings)
 
+-   Bar graphs from dictionary
+```py
+D = {u'Label1':26, u'Label2': 17, u'Label3':30}
+plt.bar(*zip(*D.items()))
+plt.show()
+
+```
 
 -   Box-plot: `plt.boxplot(data)`
 
@@ -843,7 +850,20 @@ import seaborn as sns
             : end_index : step**
         -   **Note: **Only numpy arrays (not lists) can be sliced
             using commas as above
-
+-   np.where
+```py
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# say we want the indices of those elements
+# where the 2nd column is divisible by 2
+# and the 3rd column is divisible by 3
+np.where(
+    # note the brackets!
+    (
+        (a[:,1] % 2 == 0) &
+        (a[:,2] % 3 == 0)
+    )
+)  # output [0, 2]
+```
 -   np.random.uniform(low, high, size)
 
 -   np.random.normal(mean, sd, size)
@@ -871,7 +891,12 @@ import seaborn as sns
 
 -   <https://stackoverflow.com/questions/24439137/efficient-way-for-appending-numpy-array>
 
--   
+-   Saving and loading numpy arrays
+```py
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+np.save("myarray.npy", a)
+a_copy = np.load("myarray.npy")
+```
 
 ## Pandas
 
@@ -1160,6 +1185,13 @@ multiprocessing
 
 -   <https://www.digitalocean.com/community/tutorials/python-multiprocessing-example>
 -   <https://colab.research.google.com/github/pnavaro/python-notebooks/blob/master/notebooks/10-Multiprocessing.ipynb>
+
+## `random`
+-   To select `n` distinct random elements from a list
+```py
+import random
+random.sample(myList, n)
+```
 
 Misc
 
