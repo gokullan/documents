@@ -236,9 +236,14 @@ Commands
 
 -   To use mouse: `set mouse=a`
 
+-   Character limit indicator: `set colorcolumn=80`
+
 -   Disable preview
 
     -   <https://stackoverflow.com/questions/15962421/how-can-i-disable-scratch-preview-window>
+
+-   Go to previous line: `Ctrl` + `O`
+    -   For more related shortcuts, see [here](https://stackoverflow.com/questions/4837532/returning-to-previous-line-with-vim)
 
 -   Jump to matching brace: press \`%\`
 
