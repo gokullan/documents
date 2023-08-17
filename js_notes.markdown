@@ -25,6 +25,13 @@ JS Notes
 
     -   element.style.backgroundColor = "#333"
 
+-   3 dot (...) syntax (Read more [here](https://codeburst.io/what-are-three-dots-in-javascript-6f09476b03e1))
+```js
+array2 = [...array1];
+// array2 is independent of array1 
+// (assignment operator will copy array1 by reference)
+```
+
 -   DOM traversal
 
     -   document.getElementById("")
@@ -66,8 +73,6 @@ JS Notes
 
 -   Arrow function
 
--   map
-
 -   clipboard
 
     -   navigator.clipboard.writeText(content)
@@ -79,6 +84,7 @@ JS Notes
 -   `stringName.includes(substring, start_idx)` - search for a substring (case-sensitive)
 -   `stringName.indexOf()` -   returns the first occurence of specified substring; -1 if not found   
 -   `replace`
+-   `stringName.trim()` - removes whitespace from both ends of the string
 
 ## Array
 -   array.findIndex(function(element) { /\* \... \*/ }) OR
@@ -99,13 +105,22 @@ JS Notes
 -   sort
 
 -   filter() - to return a filtered array
+```js
+arrayName.filter((element)=> {
+    return this.element == something
+})
+```
 
-    -   arrayName.filter((element)=\>{
+-   map: To execute a function on every element of an array
+```js
+arr = [1, 2, 3]
+new_arr = arr.map((e) => e + 1);
+// new_arr = [2, 3, 4]
+```
 
-        -   return this.element == something
+-   [map vs. forEach vs. every](https://stackoverflow.com/questions/7340893/what-is-the-difference-between-map-every-and-foreach)
 
-        })
-
+-   reduce
 
 -   setTimeOut(function(), \<time_in_ms\>)
 
@@ -144,6 +159,70 @@ JS Notes
 
 ## Cookies
 -   (js-cookie documentation)[https://www.npmjs.com/package/js-cookie/v/3.0.5]
+
+## Scopes
+-   Note: Functions are actually objects in JavaScript
+    -   The function name is a variable that is bound to the function object
+-   Scope dictates the portion of the program where a given variable is accessible
+-   How to restrict scope?
+    -   Enclosing code in curly braces does not create a scope in JS (like it does in C++, Java, ...)
+    -   To create a local variable, declare it inside a function
+    ```js
+    if (1) {
+        var a = 10;  // global
+    }
+    function test() {
+        var b = 10;  // local
+        console.log(a)  // 10
+        a = 20;
+    }
+    test();
+    console.log(a)  // 20
+    console.log(b)  // runtime error
+    ```
+-   JS has functional scoping - any variable created within a function is available only inside that function
+    -   Method args create (new) locally scoped variables (write operation)
+    -   If you use a variable without declaring, it is okay to do a write operation, but not a read
+-   Why global vars are an issue?
+    -   All JS scripts of a given webpage have the same namespace. This means that:
+    1.   One (malicious?) script can modify a global variable used by another
+    2.   Unintended changes due to clash of variable names result.
+-   IIFE - Immediately Invoked Function Execution
+    -   Simply enclosing a variable inside a function alone is not sufficient to eliminate the above issue.
+    -   Since a function is an object, the function name also becomes a global variable and we are back to $1^2$
+    -   Here is a workaround
+    ```js
+    (function test() {
+        // function body
+    })()  // this is immediately invoked after the script is loaded
+    ```
+-   Block scope can be obtained using `let`
+-   [Ref. Book](https://github.com/getify/You-Dont-Know-JS) by Kyle Simpson
+
+## JS Compilation and Interpretation
+### Compilation
+-   The "compiler" makes note of all variables and their scopes
+    -   Looks at `var`, function declarations and arguments
+-   Creates a "scope chain"
+-   Global variables (properties of the global object) are super-scoped and all others are function-scoped.
+### Interpretation
+-   Resolves variable references from the scope chain and executes the code
+-   If a variable is not found in the currently executing scope, it keeps going one level up in the scope chain until 
+    that variable is resolved
+-   If the global scope search is negative, then it means that the variable has not been declared. But - 
+    -   If that variable is used in a write operation, then JS creates that variable in the global scope
+        (irrespective of which scope the corresponding piece of code is in)!
+    -   Else (for a read operation), an error is thrown
+
+<img src="./images/js_compilation_interpretation.png">
+
+```js
+// example
+console.log(a);  // `undefined`, no error
+var a = 10;
+```
+
+## Closures
 
 Doubts
 

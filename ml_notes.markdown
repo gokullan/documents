@@ -721,6 +721,8 @@ Transfer Learning
 
 ML Implementation notes
 
+-   [Jupyter Notebook Tricks](https://www.kaggle.com/code/tientd95/jupyter-notebook-tricks)
+
 -   **Markdown**
 
     -   <https://www.markdownguide.org/cheat-sheet/>
@@ -864,6 +866,8 @@ np.where(
     )
 )  # output [0, 2]
 ```
+-   [Thoughts on appending to a Numpy array](https://stackoverflow.com/questions/568962/how-do-i-create-an-empty-array-and-then-append-to-it-in-numpy)
+
 -   np.random.uniform(low, high, size)
 
 -   np.random.normal(mean, sd, size)
@@ -882,6 +886,9 @@ np.where(
 -   np.start() --->
 
 -   np.array vs. np.ndarray()
+
+-   `np.swapaxes(arr, axis_1, axis_2)` - return a *view* is arr is an *ndarray* (for NumPy >= 1.10)
+    -   Changes made to the view will affect the original array
 
 -   np.ndarray.item()
 
@@ -925,6 +932,9 @@ a_copy = np.load("myarray.npy")
     -   <https://stackoverflow.com/questions/19851005/rename-pandas-dataframe-index>
 
 -   Adding a row
+```py
+df.loc[len(df)] = [v1, v2, v3, ...]
+```
 
 -   Adding a column
 
@@ -967,7 +977,7 @@ a_copy = np.load("myarray.npy")
 
         -   Replace current index with default 0-based indexing
 
-            -   Df.reset_index(drop=True)
+            ?-   Df.reset_index(drop=True)
 
                 -   drop=False retains the old index as a column in the
                     dataframe
@@ -1205,6 +1215,8 @@ Tensorflow
 
 ML algorithm -- a function that can tune variables in order to correctly
 map the inputs to their corresponding outputs
+
+-   [Should you use `keras.engine`?](https://stackoverflow.com/questions/72909937/why-is-there-no-documentation-for-keras-engine)
 
 -   Fashion MNIST training using vanilla neural network --
     <https://colab.research.google.com/github/tensorflow/examples/blob/master/courses/udacity_intro_to_tensorflow_for_deep_learning/l03c01_classifying_images_of_clothing.ipynb#scrollTo=-KtnHECKZni>\_

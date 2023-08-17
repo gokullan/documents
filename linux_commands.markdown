@@ -405,7 +405,7 @@ pactl load-module module-loopback (pactl =\> pulse audio control)
 pactl load-module module-bluetooth-discover
 
 <https://askubuntu.com/questions/801404/bluetooth-connection-failed-blueman-bluez-errors-dbusfailederror-protocol-no>
-
+-   Disabling bluetooth at startup: In `/etc/bluetooth/main.conf`, change `autoenable` to `false`
 -   Creating symbolic links
 
 ln -s \<dir_name\> \~/\<symlink_name\>
@@ -534,6 +534,25 @@ freopen("output.txt", "w", stdout);
 -   Compressing images using imagemagick
 
     -   <https://stackoverflow.com/questions/7261855/recommendation-for-compressing-jpg-files-with-imagemagick>
+
+-   [apt-key depreciation](https://askubuntu.com/questions/1403556/key-is-stored-in-legacy-trusted-gpg-keyring-after-ubuntu-22-04-update)
+
+## Cron
+-   Cron table - to schedule list of commands that need to be run  `crontab -l`
+-   `crontab -e` to edit
+-   `crontab -u username -e` to edit `username`'s cron table
+-   `crontab -r` to remove all cron tasks
+-   `cat /etc/crontab` for syntax
+### Cron expressions
+-   Multiple values: Schedule a job at 0500 on the 1st and 15th of every month:
+    `0 5 1,15 * * command_to_run`
+-   Intervals: Schedule a job every 10 minutes on the 1st of every month
+   `*/10 * 1 * * command_to_run`
+-   Range: Schedule a job every hour from midnight to 0500
+    `0 0-5 * * * command_to_run`
+-   Advanced example: Schedule a job every 30 minutes during regular business hours (Monday-Friday, 0900 to 1700)
+    `*/30 9-17 * * 1-5 command_to_run`
+-   [Online tool](https://crontab.guru/)
 
 Other questions and stuff to look into
 

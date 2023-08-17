@@ -33,11 +33,19 @@
 -   Hub - multi-port repeaters
 -   Bridge - only 2 ports; learns devices on each side
 -   Switch - faciliates communication *within* a network
+    -   3 actions: Learn, Flood, Forward
+    -   Maintain Port No. to MAC mapping
+    -   Broadcast is a type of *frame* in which the L2 header contains FF:FF:FF:FF:FF:FF as the destination MAC; Flooding is the action of duplicating and forwarding the frame to all hosts on the switch's network.
+    -   Switch has both IP and MAC
+        -  A switch sends a broadcast frame only if traffic is going *to* or *from* (**NOT** *through*) it, (i.e.), if the switch itself is a host (eg: logging into the switch for configuring it, etc.)
 -   Router - faciliates communication *between* networks
     -   Has IP (gateway address) (and MAC?) associated at every interface
 
 ## OSI 
 -   Segment (TCP header + data) -> Packet (Segment + IP) -> Frame (Packet + MAC)
+
+## Address Resolution Protocol (ARP)
+-  Maps IP to MAC
 
 ## Transport Layer
 -   Addressing scheme: Ports
@@ -49,6 +57,17 @@
 ## Subnetting
 -   [Reference](http://subnetipv4.com/)
 
+## Proxies
+-   Forward
+-   Reverse
+
+## CDN
+
+## VPN
+-   Site-to-site (IPSec)
+-   Remote access (TLS)
+-   [VPN vs. TLS](https://security.stackexchange.com/questions/1476/what-is-the-difference-in-security-between-a-vpn-and-a-ssl-connection)
+
 ## Doubts
 -   Intranet example
 -   Payload vs. traffic
@@ -58,9 +77,10 @@
 -   URL vs. URI
 -   CDN
 -   Browser caching
--   nginx
 -   Bridge vs. Router
--   Broadcast address in ARP (FF:FF:FF:FF:FF:FF)
+-   Switches
+    -   MAC address table should include MAC to Port mapping? (or Port to MAC mapping?)
+    -   When a switch floods a network, does it add its own MAC?
 
 ## References
 -   MDN Documentation

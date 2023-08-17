@@ -431,3 +431,6 @@ EXCEPTION HANDLING
 
     -   \<gets executed irrespective of whether an exception is thrown
         or not\>
+
+-   Use `global varname` if the global variable `varname` is being assigned inside a function. 
+    Refer [here](https://stackoverflow.com/questions/10851906/python-3-unboundlocalerror-local-variable-referenced-before-assignment) for explanation.
