@@ -200,6 +200,14 @@ new_arr = arr.map((e) => e + 1);
 -   [Ref. Book](https://github.com/getify/You-Dont-Know-JS) by Kyle Simpson
 
 ## JS Compilation and Interpretation
+-   JS is both compiled and interpreted
+    -   Compilation step happens just before interpretation
+    -   Compilation entails "making notes" from the source code to ensure it has
+        everything for execution (not creating an intermediary code as in case
+of other compilers)
+-   Global object depends on the runtime (`window` for browser, `global` for
+    node)
+
 ### Compilation
 -   The "compiler" makes note of all variables and their scopes
     -   Looks at `var`, function declarations and arguments
@@ -221,8 +229,64 @@ new_arr = arr.map((e) => e + 1);
 console.log(a);  // `undefined`, no error
 var a = 10;
 ```
+-   Hoisting
+    -   Due to the 2-step process, it feels as if the variable declarations are
+        hoisted (pushed to the top) and then the code executes
+    -   This addtionally has implications for 2 (or more) functions calling each
+        other
+    ```js
+    function fn1() {
+        fn2();
+    } 
+
+    functions fn2() {
+        fn1();
+    }
+    ```
+    -   Note that the above does not work for function expressions since
+        assignments are made by the interpreter (a function
+        declaration results in a function object being created in the
+compilation step itself).
+-   Strict mode: Place `"use strict";` at the top of the JS file. (can also be
+    applied to just a function)
 
 ## Closures
+-   For a JS function expression, the scope information* is also attached to the
+    variable (in addition to the function definition itself)
+-   \*scope information => Pointer to actual variables (at the time the function
+    was executed)
+    -   This means that the scope a function is executing in need not contain
+        the actual variables.
+-   In simple terms, a closure is a function that remembers its scope
+-   In depth
+    -   Variables declared in a function are created each time that function is
+        called
+```js
+var a = 10;  // global
+
+function outer() {
+    var b = 20;  // created every time `outer` is executed
+    var inner = function() {
+        a++;
+        b++;
+        console.log(a);
+        console.log(b);
+    }
+    return inner;
+}
+
+var inner1 = outer()  // global `a` and `b` attached to inner1
+inner1();
+// 11
+// 21
+
+var inner2 = outer() // global `a` and new `b` attached to inner2
+inner2();
+// 12
+// 21
+```
+
+-   `setTimeout(fn, 1000)` is a practical example of closures being used.
 
 Doubts
 
