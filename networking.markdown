@@ -81,6 +81,8 @@
 -   Switches
     -   MAC address table should include MAC to Port mapping? (or Port to MAC mapping?)
     -   When a switch floods a network, does it add its own MAC?
+-   If I start, say a Hapi server, can other devices connected to the internet
+    access it?
 
 ## References
 -   MDN Documentation
