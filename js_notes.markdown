@@ -254,7 +254,7 @@ compilation step itself).
 -   For a JS function expression, the scope information* is also attached to the
     variable (in addition to the function definition itself)
 -   \*scope information => Pointer to actual variables (at the time the function
-    was executed)
+    was declared?)
     -   This means that the scope a function is executing in need not contain
         the actual variables.
 -   In simple terms, a closure is a function that remembers its scope
@@ -287,6 +287,60 @@ inner2();
 ```
 
 -   `setTimeout(fn, 1000)` is a practical example of closures being used.
+
+### The Module Pattern
+-   A workaround to have getters and setters (make properties of an object
+    private)
+```js
+function createObj() {
+    var somePrivateVar = 10;
+    var objToReturn = {
+        "getPrivateVar": function() {
+            return somePrivateVar;
+        }
+    }
+    return objToReturn;
+}
+
+var obj = createObj();
+console.log(obj.getPrivateVar()); // 10
+console.log(obj.somePrivateVar);  // undefined
+```
+-   This works because of the concept of closures - the getters and setters
+    remember the variables used inside them.
+
+### Closures and Async functions
+```js
+var i;
+for(i = 0; i < 10; ++i) {
+    setTimeout(
+        function() {
+            console.log(i);  // 10 is printed 10 times
+        }, 1000
+    )
+}
+```
+-   The problem with the above snippet is that all the setTimeout calls point to
+    the *same* variable `i` (the one in the global scope).
+-   Because all these calls get executed after the `for` loop completes, all
+    calls print the final value of `i` which is 10
+-   To solve this problem, we need each calls to point to a  different variable.
+```js
+for(i = 0; i < 10; ++i) {
+    (function() {
+        var currValue = i;
+        setTimeout(
+            function() {
+                console.log(currValue); // expected behaviour
+            }, 1000
+        )
+    }
+    )();
+}
+```
+-   **Note:** "The argument-function of the method setTimeout is always executed
+    last: once the entire code of the file has been executed." (Refer comment
+[here](https://youtu.be/RU-QXuhOSy0))
 
 Doubts
 
