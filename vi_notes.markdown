@@ -183,6 +183,14 @@ Commands
 -   To comment: Ctrl V + Shilf+I + '// ' + Esc (similar controls for
     uncommenting)
 
+-   Copy to other registers (`+` and `*`)
+    -   `"*y` to copy current line
+    -   `n"*yy` to copy `n` lines
+    -   `"*p` to paste
+    -   Use the `+` register to copy to external (global?) clipboard; use `*` to
+        copy-paste between different vim applications.
+    -   [Reference](https://stackoverflow.com/questions/3961859/how-to-copy-to-clipboard-in-vim)
+
 -   Copy (all contents) to clipboard: :%y+ or gg"+yG or gg"\*yG
 
     -   <https://superuser.com/questions/227385/how-do-i-select-all-text-in-vi-vim/1230483>
@@ -237,6 +245,11 @@ Commands
 -   To use mouse: `set mouse=a`
 
 -   Character limit indicator: `set colorcolumn=80`
+
+-   Wrapping
+    -   `set textwidth=80` will ensure character-line limit *as* you type
+    -   If this property is already set, but the line is not wrapped, go to
+        visual mode and type `gq`
 
 -   Disable preview
 
