@@ -77,6 +77,15 @@ array2 = [...array1];
 
     -   navigator.clipboard.writeText(content)
 
+-   UTF-8 encoding
+    -   Uses 1 to 4 bytes for character encoding
+    -   [Reference](https://stackoverflow.com/questions/10229156/how-many-characters-can-utf-8-encode) 
+
+-   `encodeURIComponent`
+    -   Used to encode data sent from the user's side
+        -   Needed to ensure characters like `&` are not interpreted incorrectly
+    -   The encoding is done based on UTF-8 encoding
+
 ## String Manipulation
 -   `stringName.toUpperCase()` (OR) `stringName.toLowerCase()`
 -   `stringName.repeat(x)`
