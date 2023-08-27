@@ -1,11 +1,32 @@
 # PostgreSQL
 
--   `sudo -i -u postgres`
--   `\psql` for Postgres shell
+## Login
+-   `sudo -i -u postgres` to go to PostgreSQL admin terminal
+    -   `\psql` for Postgres shell
+-   `psql -U username -d dbname` to log in using a different username and access
+    `dbname` 
+    -   `-d dbname` if not provided, psql will try to access the default
+        database (the same name as the username) which may not exist 
+
+## Administration
+-   Add `psql -U ... -f file.sql` to execute the file on a database
+
+## `psql`
 -   `\password` to change password
 -   Default port: 5432
 -   `\conninfo`
--   `IN`: The IN operator is a good early demonstrator of the elegance of the relational model. The argument it takes is not just a list of values - it's actually a table with a single column. Since queries also return tables, if you create a query that returns a single column, you can feed those results into an IN operator. To give a toy example: 
+-   `\du` or `\du+` to list users
+-   `\l` to list databases
+-   `\c database_name` to use (/switch to) a database
+-   `\dt` to show tables
+-   UUID
+    -   `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";` to install extension first
+    -   `SELECT uuid_generate_v4()`
+-   `IN`: The IN operator is a good early demonstrator of the elegance of the
+    relational model. The argument it takes is not just a list of values - it's
+    actually a table with a single column. Since queries also return tables, if
+    you create a query that returns a single column, you can feed those results
+    into an IN operator. To give a toy example: 
 ```
 SELECT CASE expression
     WHEN value THEN result2
@@ -16,3 +37,6 @@ SELECT CASE expression
 
 ## Date
 -   `yyyy-mm-dd hh:mm:ss` format
+
+## Resources
+-   [ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
