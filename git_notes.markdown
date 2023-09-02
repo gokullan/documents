@@ -45,7 +45,7 @@
 
     -   To view commit history: git log (OR) git log \--oneline
 
-    -   
+    -   To get a graph of commits do `git log --graph --decorate  --oneline --all`  
 
 -   Uploading to GitHub from a local repository
 
@@ -126,6 +126,32 @@
 -   Commit messages
 
     -   <https://www.conventionalcommits.org/en/v1.0.0/>
+
+## Merging
+-   Scenario 1: When the local repository is ahead of the remote by some commits
+    and the remote also has commits that were *not* pulled by the local *before*
+    it made those commits.
+    ```
+    // before merge
+    * LOCAL ORIGIN HEAD
+    *
+    *
+    | REMOTE ORIGIN HEAD
+    |/
+    *
+    *
+
+    // after merge
+    * LOCAL ORIGIN HEAD
+     \
+    * |
+    * |
+    | REMOTE ORIGIN HEAD
+    |/
+    *
+    *
+    // the merge itself is a separate commit, but that is not shown here.
+    ```
 
 -   Sync local repository with upstream
     ```
