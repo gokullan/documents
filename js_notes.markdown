@@ -351,6 +351,8 @@ for(i = 0; i < 10; ++i) {
     last: once the entire code of the file has been executed." (Refer comment
 [here](https://youtu.be/RU-QXuhOSy0))
 
+-   [Load scripts asynchronously](https://stackoverflow.com/questions/7718935/load-scripts-asynchronously)
+
 Doubts
 
 -   document.write() vs writeln()
