@@ -268,6 +268,7 @@ Commands
     -   `gt` or `gT` for sequential switching
     -   `xgt` or `xgT` or `:tabn x` to move to the tab number `x`
     -   `:tabmove x` to physically move the tab
+    -   `wqa` or `qa` to close all tabs
 
 -   Copying to clipboard (if not complied with `xclip`)
     -   Install `xclip` (`sudo apt install xclip`)

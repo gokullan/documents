@@ -67,6 +67,75 @@
     // above function runs only when the values of `variablesToWatch` changes
     ```
 
+### Custom Hooks
+-   All custom hooks should begin with `use`
+-   The 'unmounted component' console error
+    -   Suppose the custom hook fetches (asynchronously) data from a URL and
+        updates its states depending on the status of the request.
+    -   But say, before the fetch is completed (after the fetch is started), we
+        move to a different page
+    -   In this case, once the fetch completes, the states will be updated and
+        the corresponding component will be re-rendered - **BUT** this component
+        has been unmounted now (thus the error)
+    -   This can be rectified using an `AbortController` object and a cleanup
+        function (refer lesson-2). 
+```js 
+const useFetch() = (url) => {
+    // ...
+    useEffect(() => {
+        const abortCont = new AbortController();
+        // cleanup function
+        fetch(
+            url, {signal: abortCont.signal()}
+        ).then( // ... )
+        // remember to add condition for AbortError
+        return () => abortCont.abort();
+    }, [url]);
+    // ...
+    return [ something1, something2, ... ]
+}
+export default useFetch;
+```
+
+## Routing
+-   `npm install react-router`
+```js
+// App.js
+
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+
+<App>
+    // ...
+    <Router>
+        <Switch>
+            <Route exact path="/abc/:param">
+                <ComponentToDisplay />
+            </Route>
+        </Switch>
+    </Router>
+
+    // use `Link` to let react handle (intercept) routing
+    <Link to="/abc">
+        <button>Click Me</button>
+    </Link>
+</App>
+```
+-   Accessing parameters
+```js
+import { useParams } from 'react-router-dom'
+
+const SomeComponent = () => {
+    const { paramName } = useParams();
+}
+
+export default SomeComponent
+```
+-   Passing props [via `Link`](https://ui.dev/react-router-pass-props-to-link)
+-   Use `useNavigate` hook to navigate to another page
+    -   [Passing
+        values](https://stackoverflow.com/questions/64566405/react-router-dom-v6-usenavigate-passing-value-to-another-component)
+        with `useNavigate`
+
 ## Some useful JS functions
 -   Array API
     -   map
@@ -77,6 +146,14 @@
     })
     ```
     -   `setTimeout(() => {}, 1000)`
+
+## Events
+-   To get the event-bound element use `e.target`
+    -   If the element is `<input>` use `e.target.value` to get the value
+
+## References
+-   [Course Link (GitHub)](https://github.com/iamshaunjp/Complete-React-Tutorial)
+-   [Calling a function after an element is visible](https://rasilbaidar.medium.com/trigger-event-when-element-enters-viewport-the-react-way-168509da2e23)
 
 ## Doubts
 -   How does SPA work in the context of React?

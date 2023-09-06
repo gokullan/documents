@@ -352,11 +352,28 @@ for(i = 0; i < 10; ++i) {
 [here](https://youtu.be/RU-QXuhOSy0))
 
 -   [Load scripts asynchronously](https://stackoverflow.com/questions/7718935/load-scripts-asynchronously)
+-   Autoscroll to end of `div`
+```js
+if (condition) {
+    divNode.scrollTop = divNode.scrollHeight;
+}
+```
+
+### Datetime stuff
+-   HH:MM:SS to seconds - [source](https://stackoverflow.com/questions/9640266/convert-hhmmss-string-to-seconds-only-in-javascript)
+```js
+'01:02:03'.split(':').reduce((acc,time) => (60 * acc) + +time);
+```
+-   Sort data by time
+```js
+data.sort(function (a, b) {
+    return a.time.localeCompare(b.time);
+});
+```
 
 Doubts
 
 -   document.write() vs writeln()
 -   let vs. var
--   more on form validation (.value)
--   collections in JS
--   JS events
+-   How do 2 async calls get executed in JavaScript (will the 2nd call return if
+    it can complete in a shorter time?)

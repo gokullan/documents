@@ -30,6 +30,27 @@ Hapi.server({
     }
 });
 ```
+-   [Handling CORS](https://stackoverflow.com/questions/57653272/how-to-allow-cors-in-hapi-js)   
+```js
+Hapi.Server({
+    // ...
+    "routes": {
+        "cors": true,
+    }
+})
+```
+-   [Handling `multipart/form-data`](https://stackoverflow.com/questions/61957031/hapijs-not-accepting-form-data-requests)
+```js
+server.route({
+    // ...
+    options: {
+        payload: {
+            multipart: true,
+            maxBytes: 2000000,
+        }
+    }
+})
+```
 -   Handlers as objects
     -   The object must  contain one of the following: file (requires
         @hapi/inert plugin),  directory (requires @hapi/inert plugin), proxy
