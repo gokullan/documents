@@ -78,6 +78,7 @@
 -   CDN
 -   Browser caching
 -   Bridge vs. Router
+-   Firewall
 -   Switches
     -   MAC address table should include MAC to Port mapping? (or Port to MAC mapping?)
     -   When a switch floods a network, does it add its own MAC?

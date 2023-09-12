@@ -104,8 +104,16 @@ services:
 -   `docker stop container-name`
 -   `docker rm container-name`
 -   `docker system prune`
-
+-   `docker exec -it container-name` /bin/bash
+    -   It is sometimes `/bin/sh`
+    -   [Reference](https://stackoverflow.com/questions/26153686/how-do-i-run-a-command-on-an-already-existing-docker-container)
+ 
 ## Doubts
 -   Can an application developed for Windows be run on a container in Linux?
 -   How does mouting volumes work (Why do `COPY`?`)?
 -   How to enter container terminal?
+-   `--expose` vs `-p` vs `EXPOSE` on Dockerfile
+    -   [Reference](https://stackoverflow.com/questions/40801772/what-is-the-difference-between-ports-and-expose-in-docker-compose)
+-   Docker with NodeJS and Postgres -
+    [1](https://kundan-9343.medium.com/node-js-rest-api-setup-with-docker-compose-express-and-postgres-d53fb0c77da7),
+    [2](https://dev.to/chandrapantachhetri/docker-postgres-node-typescript-setup-47db)
