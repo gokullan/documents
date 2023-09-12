@@ -99,6 +99,12 @@ server.route({
     }
 });
 ```
+## `hapi-swagger`
+-   [Example](https://github.com/hapi-swagger/hapi-swagger/blob/master/examples/options.js)
+    for `options`
+-   [Authorization
+    example](https://medium.com/@arpanmajibally/hapi-js-authentication-with-swagger-documentation-3fe916e24280)
+    -   Use `securityDefinitions`
 
 ## Doubts
 -   Absolute paths should be provided while serving files?
