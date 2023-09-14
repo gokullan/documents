@@ -6,6 +6,7 @@ Linux Commands
     -   see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
     -   Multiple patterns: `grep 'pattern1|pattern2' file`
     -   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
+    -   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
 
 -   To run shell script
 
