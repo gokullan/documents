@@ -178,7 +178,11 @@
     -   Hard 'delete' commits
     `git reset --hard [commit_id_start]..[commit_id_end]`
     -   [Source 1](https://remarkablemark.org/blog/2017/09/19/revert-file-after-commit/), [2](https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit)
-    
+
+### Pulling a change from multiple branches
+- `git cherry-pick [commit-id]`
+  - In case of conflict, resolve conflict and do `git commit --no-verify`
+  - [Reference](https://stackoverflow.com/questions/65224262/how-do-you-git-cherry-pick-continue-with-no-verify)
 
 **Pushing from a local repository branch (master) to a (my) GitHub
 repository (set as remote origin) branch (main)**
