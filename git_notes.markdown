@@ -209,24 +209,6 @@ Rebasing
     \"You are currently editing a commit\"? - Stack
     Overflow](https://stackoverflow.com/questions/31252363/how-to-get-rid-of-you-are-currently-editing-a-commit)
 
-Personal Access Tokens
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
 Meilisearch
 
 \--master-key BuDML6SBIbVeGPiute8gisixsBDMHGOxxCF_uLqnl5M
