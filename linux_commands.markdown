@@ -50,9 +50,9 @@ find /path/to/dir -newermt \"date\"
 
 sudo find / -name "xelatex"
 
--   To copy contents of a file to clipboard
-
-cat source.c \| xclip -selection c
+- To copy contents of a file to clipboard
+  - `cat source.c | xclip -selection c`
+  - Use `-r` flag to remove newline at the end of selection
 
 -   To find (or locate) a file and open it using xdg-open
 
@@ -463,8 +463,8 @@ freopen("output.txt", "w", stdout);
     -   use npm link to link with \@angular/cli
 
 -   Killing a process running on a port
-
     -   sudo kill -9 \$(sudo lsof -t -i:PORT_NUM)
+        ([Reference](https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux))
 
 (-9 is for force kill)
 

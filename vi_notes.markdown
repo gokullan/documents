@@ -312,4 +312,8 @@ Commands
 
 **Plugins**
 -   [Markdown Preview for Neo-vim](https://github.com/iamcco/markdown-preview.nvim)
+    -   For emojis, refer [here](https://www.webfx.com/tools/emoji-cheat-sheet/)
+        for unicodes and
+        [here](https://stackoverflow.com/questions/34538879/unicode-emojis-in-github-markdown)
+        for the markdown syntax
 -   Netrw (inbuilt with vim)
