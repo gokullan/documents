@@ -15,6 +15,8 @@ CREATE USER [username] WITH PASSWORD '[password]';
 CREATE DATABASE [dbname];
 GRANT ALL PRIVILEGES ON DATABASE [dbname] to [username];
 ```
+- [PEER Authentication Error](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+  - Create a new entry in `pg_hba.conf` for the required user.
 
 ## Administration
 -   Add `psql -U ... -f file.sql` to execute the file on a database
