@@ -492,9 +492,9 @@ freopen("output.txt", "w", stdout);
 
     -   <https://help.ubuntu.com/community/Hamachi>
 
--   Check SSH status
-
-    -   sudo systemctl status ssh
+## `ssh`
+- Check status: `sudo systemctl status ssh`
+- Generate key: `ssh-keygen -t ed25519 -C "your_email@example.com"`
 
 -   Enabling KVM for Android Studio
 
