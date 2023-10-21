@@ -171,13 +171,20 @@ height="7.514cm"}
 
     -   str is used for readability
 
--   JSON (import json) --
-    <https://www.programiz.com/python-programming/json>
-
-    -   Loading JSON: person_dict = json.loads(personJSON)
-
-    -   Pretty printing JSON: json.dumps(person_dict, indent=4,
+## JSON (`import json`)
+-   Loading JSON: person_dict = json.loads(personJSON)
+-   Pretty printing JSON: json.dumps(person_dict, indent=4,
         sort_keys=True)
+-   Reading and writing to files
+```python
+# read
+f = open("file_1", "r")
+data = json.load(f)
+# write
+f = open("file_2", "w")
+json.dump(data, f)
+```
+- [Reference](https://www.programiz.com/python-programming/json)
 
 -   Object Oriented Programming
 

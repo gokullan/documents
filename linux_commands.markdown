@@ -474,6 +474,7 @@ freopen("output.txt", "w", stdout);
 
     -   lsof -t -itcp:PORT_NUM
     -   <https://askubuntu.com/questions/227161/how-can-we-find-which-process-is-using-a-particular-port>
+- Finding process name given PID: `ps -p PID -o command`
 
 -   Conda
 
