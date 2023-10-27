@@ -293,13 +293,22 @@ Commands
     -   [Tutorial](https://linuxhint.com/vim-vundle-tutorial/)       
     -   [`PluginSearch` error](https://github.com/VundleVim/Vundle.vim/issues/599) 
 
+- vim-plug 
+  - In the installation instruction provided, the line
+    `${XDG_DATA_HOME:-$HOME/.local/share}` may cause issues
+
 -  YouCompleteMe
    -   [JS
-       Autocomplete](https://blog.prismatik.com.au/snippets-in-vim-43cf2ad79000)
+       Autocomplete](https://blog.priDsmatik.com.au/snippets-in-vim-43cf2ad79000)
+
+- Conquer of Completion (`coc.nvim`)
+  - Use vim-plug and the `release` branch
+  - [List of extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions) 
 
 -  Viewing Variables
    -    `:set all`
    -    [Variables associated with a plugin](https://stackoverflow.com/questions/62943877/how-to-view-all-variables-associated-with-a-plugin-in-vim)
+   - `echo g:variable_name` to view a specific variable
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
@@ -316,4 +325,4 @@ Commands
         for unicodes and
         [here](https://stackoverflow.com/questions/34538879/unicode-emojis-in-github-markdown)
         for the markdown syntax
--   Netrw (inbuilt with vim)
+-   Netrw (inbuilt with vim) 

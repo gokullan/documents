@@ -493,6 +493,10 @@ freopen("output.txt", "w", stdout);
 
     -   <https://help.ubuntu.com/community/Hamachi>
 
+- "Too many symlinks" error
+  - If this error arises from Desktop, Pictures, Public ..., edit th
+    `./config/user-dirs.dir` file. ([Reference](https://askubuntu.com/questions/116276/how-to-set-the-desktop-to-home-desktop#222333))
+
 ## `ssh`
 - Check status: `sudo systemctl status ssh`
 - Generate key: `ssh-keygen -t ed25519 -C "your_email@example.com"`
