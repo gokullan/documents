@@ -50,9 +50,10 @@
 - [Example](https://stackoverflow.com/questions/64920407/elasticdump-with-tls-unable-to-verify-the-first-certificate)
   command with https
 
-### Kibana
-
-## ES Query
+## ES Requests
+- To list all indices: `curl -XGET http://localhost:9200/_cat/indices`
+- To insert a document: `POST http://localhost:9200/_doc`
+- To delete a document: `DELETE http://localhost:9200/_doc/id`
 - To return all records
 ```json
 {

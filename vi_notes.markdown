@@ -288,6 +288,8 @@ Commands
     -   `t` to open in a new tab
     -   Configuring
         -   [Set autonumbering](https://stackoverflow.com/questions/8730702/how-do-i-configure-vimrc-so-that-line-numbers-display-in-netrw-in-vim): Add `let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'` to ~/.vimrc
+    - For tree-view listing of directory, set `g:netrw_liststyle` to 3
+    - [Quick Reference Guide](https://gist.github.com/t-mart/610795fcf7998559ea80)
 
 -   [Vundle Plugin Manager]
     -   [Tutorial](https://linuxhint.com/vim-vundle-tutorial/)       
