@@ -305,12 +305,22 @@ Commands
 
 - Conquer of Completion (`coc.nvim`)
   - Use vim-plug and the `release` branch
+  - Update Node path if needed (`g:coc_node_path`)
   - [List of extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions) 
 
 -  Viewing Variables
    -    `:set all`
    -    [Variables associated with a plugin](https://stackoverflow.com/questions/62943877/how-to-view-all-variables-associated-with-a-plugin-in-vim)
    - `echo g:variable_name` to view a specific variable
+
+## Key Bindings
+- `<C-R>` - Carriage-Return
+- `<Leader>` - `\` key by default
+
+## Debugging
+- [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
+  - `pip3 install pynvim`
+  - For NodeJS, use the gadget `vscode-js-debug`
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source

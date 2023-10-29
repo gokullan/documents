@@ -63,3 +63,18 @@
 }
 ```
 - Deleting an index: `curl -XDELETE localhost:9200/shop`
+- Range query
+```json
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 10,
+        "lte": 20,
+        "boost": 2.0
+      }
+    }
+  }
+}
+```
+- [Bodybuilder to ES Query](https://bodybuilder.js.org/)
