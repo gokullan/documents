@@ -264,6 +264,10 @@ Commands
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
+## Highlight
+- `set hlsearch`
+- `:noh` to turn off highlight until next search
+
 -   [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)
     -   `gt` or `gT` for sequential switching
     -   `xgt` or `xgT` or `:tabn x` to move to the tab number `x`
@@ -321,6 +325,13 @@ Commands
 - [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
   - `pip3 install pynvim`
   - For NodeJS, use the gadget `vscode-js-debug`
+- [Using vim-dap](https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/)
+
+## Lua
+- [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
+- [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
+- [Neovim config sample - 1](https://github.com/miltonllera/neovim-config)
+- [Ujjwaleshwar's config](https://github.com/Ujs113/nvim-config/tree/main)
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
@@ -337,4 +348,5 @@ Commands
         for unicodes and
         [here](https://stackoverflow.com/questions/34538879/unicode-emojis-in-github-markdown)
         for the markdown syntax
--   Netrw (inbuilt with vim) 
+-   Netrw (inbuilt with vim)
+- [VimAwesome](https://vimawesome.com/) for plugin documentation

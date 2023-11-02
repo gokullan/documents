@@ -77,4 +77,16 @@
   }
 }
 ```
+- Terms query
+```json
+{
+  "query": {
+    "terms": {
+      "user.id": [ "kimchy", "elkbee" ],
+      "boost": 1.0
+    }
+  }
+}
+```
+- Use `term` to check for a single value
 - [Bodybuilder to ES Query](https://bodybuilder.js.org/)
