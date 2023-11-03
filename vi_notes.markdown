@@ -311,6 +311,7 @@ Commands
   - Use vim-plug and the `release` branch
   - Update Node path if needed (`g:coc_node_path`)
   - [List of extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions) 
+  - For key mappings in lua, see [here](https://github.com/neoclide/coc.nvim/discussions/3776)
 
 -  Viewing Variables
    -    `:set all`
@@ -325,9 +326,13 @@ Commands
 - [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
   - `pip3 install pynvim`
   - For NodeJS, use the gadget `vscode-js-debug`
-- [Using vim-dap](https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/)
+- [Using vim-dap (and vim-dap-ui)](https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/)
+  - It may be required to patch/ change the terminal font to render icons for vim-dap-ui
+  - See `linux_commands.markdown` and [this link](https://github.com/rcarriga/nvim-dap-ui/issues/257).
 
 ## Lua
+- `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))` to view runtimepaths
+### References
 - [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
 - [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
 - [Neovim config sample - 1](https://github.com/miltonllera/neovim-config)
