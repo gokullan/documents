@@ -543,6 +543,24 @@ freopen("output.txt", "w", stdout);
 
 -   [apt-key depreciation](https://askubuntu.com/questions/1403556/key-is-stored-in-legacy-trusted-gpg-keyring-after-ubuntu-22-04-update)
 
+## Using custom font for terminal
+- Download the font (give permissions) and place it in `.local/share/fonts`
+- `sudo fc-cache -vf ~/.local/share/fonts`
+### Other things that could have effect
+- Copy the font to `/usr/share/fonts`
+- Do `fc-cache -vf` again
+- Update font with `dconf`
+```bash
+# get your profile id
+dconf list '/org/gnome/terminal/legacy/profiles:/'
+# get your current font
+dconf read '/org/gnome/terminal/legacy/profiles:/:PROFILE_ID/font'
+# set the font, make sure you include those single quotes
+dconf write '/org/gnome/terminal/legacy/profiles:/:PROFILE_ID/font' "'FreeMono 18'"
+```
+- `fc-list` to list all (system) fonts
+- [Reference](https://askubuntu.com/questions/362633/using-installed-fonts-in-gnome-terminal)
+
 ## Cron
 -   Cron table - to schedule list of commands that need to be run  `crontab -l`
 -   `crontab -e` to edit
