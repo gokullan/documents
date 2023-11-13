@@ -6,6 +6,7 @@ Linux Commands
     -   see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
     -   Multiple patterns: `grep 'pattern1|pattern2' file`
     -   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
+    -   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
 
 -   To run shell script
 
@@ -49,9 +50,9 @@ find /path/to/dir -newermt \"date\"
 
 sudo find / -name "xelatex"
 
--   To copy contents of a file to clipboard
-
-cat source.c \| xclip -selection c
+- To copy contents of a file to clipboard
+  - `cat source.c | xclip -selection c`
+  - Use `-r` flag to remove newline at the end of selection
 
 -   To find (or locate) a file and open it using xdg-open
 
@@ -462,8 +463,8 @@ freopen("output.txt", "w", stdout);
     -   use npm link to link with \@angular/cli
 
 -   Killing a process running on a port
-
     -   sudo kill -9 \$(sudo lsof -t -i:PORT_NUM)
+        ([Reference](https://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux))
 
 (-9 is for force kill)
 
@@ -473,6 +474,7 @@ freopen("output.txt", "w", stdout);
 
     -   lsof -t -itcp:PORT_NUM
     -   <https://askubuntu.com/questions/227161/how-can-we-find-which-process-is-using-a-particular-port>
+- Finding process name given PID: `ps -p PID -o command`
 
 -   Conda
 
@@ -491,9 +493,13 @@ freopen("output.txt", "w", stdout);
 
     -   <https://help.ubuntu.com/community/Hamachi>
 
--   Check SSH status
+- "Too many symlinks" error
+  - If this error arises from Desktop, Pictures, Public ..., edit th
+    `./config/user-dirs.dir` file. ([Reference](https://askubuntu.com/questions/116276/how-to-set-the-desktop-to-home-desktop#222333))
 
-    -   sudo systemctl status ssh
+## `ssh`
+- Check status: `sudo systemctl status ssh`
+- Generate key: `ssh-keygen -t ed25519 -C "your_email@example.com"`
 
 -   Enabling KVM for Android Studio
 
@@ -536,6 +542,24 @@ freopen("output.txt", "w", stdout);
     -   <https://stackoverflow.com/questions/7261855/recommendation-for-compressing-jpg-files-with-imagemagick>
 
 -   [apt-key depreciation](https://askubuntu.com/questions/1403556/key-is-stored-in-legacy-trusted-gpg-keyring-after-ubuntu-22-04-update)
+
+## Using custom font for terminal
+- Download the font (give permissions) and place it in `.local/share/fonts`
+- `sudo fc-cache -vf ~/.local/share/fonts`
+### Other things that could have effect
+- Copy the font to `/usr/share/fonts`
+- Do `fc-cache -vf` again
+- Update font with `dconf`
+```bash
+# get your profile id
+dconf list '/org/gnome/terminal/legacy/profiles:/'
+# get your current font
+dconf read '/org/gnome/terminal/legacy/profiles:/:PROFILE_ID/font'
+# set the font, make sure you include those single quotes
+dconf write '/org/gnome/terminal/legacy/profiles:/:PROFILE_ID/font' "'FreeMono 18'"
+```
+- `fc-list` to list all (system) fonts
+- [Reference](https://askubuntu.com/questions/362633/using-installed-fonts-in-gnome-terminal)
 
 ## Cron
 -   Cron table - to schedule list of commands that need to be run  `crontab -l`

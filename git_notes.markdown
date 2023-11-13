@@ -178,7 +178,17 @@
     -   Hard 'delete' commits
     `git reset --hard [commit_id_start]..[commit_id_end]`
     -   [Source 1](https://remarkablemark.org/blog/2017/09/19/revert-file-after-commit/), [2](https://stackoverflow.com/questions/4114095/how-do-i-revert-a-git-repository-to-a-previous-commit)
-    
+
+### Pulling a change from multiple branches
+- `git cherry-pick [commit-id]`
+  - In case of conflict, resolve conflict and do `git commit --no-verify`
+  - [Reference](https://stackoverflow.com/questions/65224262/how-do-you-git-cherry-pick-continue-with-no-verify)
+
+### `git mergetool`
+- Refer [here](https://gist.github.com/karenyyng/f19ff75c60f18b4b8149) for a
+  detailed description on using `mergetool`
+- **Note**: Once `mergetool` is opened, do not quit until the conflicts are
+  resolved.
 
 **Pushing from a local repository branch (master) to a (my) GitHub
 repository (set as remote origin) branch (main)**
@@ -198,30 +208,17 @@ height="2.8541666666666665in"}
 Rebasing
 
 -   "There isn't anything to compare" -- [git - Github Pull Request:
-    There isn\'t anything to compare - Stack
-    Overflow](https://stackoverflow.com/questions/53844405/github-pull-request-there-isnt-anything-to-compare)
+   There isn\'t anything to compare - Stack
+   Overflow](https://stackoverflow.com/questions/53844405/github-pull-request-there-isnt-anything-to-compare)
 
 -   "You are currently editing a commit" -- [git - How to get rid of
-    \"You are currently editing a commit\"? - Stack
-    Overflow](https://stackoverflow.com/questions/31252363/how-to-get-rid-of-you-are-currently-editing-a-commit)
+   \"You are currently editing a commit\"? - Stack
+   Overflow](https://stackoverflow.com/questions/31252363/how-to-get-rid-of-you-are-currently-editing-a-commit)
 
-Personal Access Tokens
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
-
--   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
+## Stash
+- `git stash push -m "Stash message"` to save a stash with message 
+- `git stash pop` to pop the (topmost) stash and apply the changes
+- `git stash drop stash@{n}` to drop a specific stash
 
 Meilisearch
 
@@ -251,3 +248,6 @@ Libreoffice
 
     -   Missing Change-ID in commit message --
         <https://stackoverflow.com/questions/8845658/gerrit-error-when-change-id-in-commit-messages-are-missing>
+
+## References
+- [Charles Duan - Guide](https://www.cduan.com/technical/git/)

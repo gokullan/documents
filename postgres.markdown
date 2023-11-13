@@ -3,10 +3,20 @@
 ## Login
 -   `sudo -i -u postgres` to go to PostgreSQL admin terminal
     -   `\psql` for Postgres shell
+    -   Alternate: `sudo -u postgres psql`
 -   `psql -U username -d dbname` to log in using a different username and access
     `dbname` 
     -   `-d dbname` if not provided, psql will try to access the default
-        database (the same name as the username) which may not exist 
+        database (the same name as the username) which may not exist
+
+## Access
+```sql
+CREATE USER [username] WITH PASSWORD '[password]';
+CREATE DATABASE [dbname];
+GRANT ALL PRIVILEGES ON DATABASE [dbname] to [username];
+```
+- [PEER Authentication Error](https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
+  - Create a new entry in `pg_hba.conf` for the required user.
 
 ## Administration
 -   Add `psql -U ... -f file.sql` to execute the file on a database

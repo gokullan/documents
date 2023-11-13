@@ -30,3 +30,63 @@
             -   Each shard is assigned to a node, so the number of documents a shard can hold depends on the capacity of the node.
             -   Sharding speeds up searching through parallel searches across nodes (shards?)
             -   To sum up, sharding can help store more data (horizonatal scaling) and also help speed up search.
+
+## Setup
+- Follow instructions given on the website
+### Elasticsearch
+- By default, stored at `/usr/share/elasticsearch`
+- Uses `https` by default - configure at `elasticsearch.yml`
+- Certificate at `/etc/elasticsearch/certs/http_ca.crt`
+- For cURL, the URL is of the format
+  `https://elastic:PASSWORD@localhost:9200/`
+- For password reset, give the arg `-u elastic` for the script
+  `elastic-reset-password`
+#### Elasticdump
+- Use `--transform='doc._source=Object.assign({}, doc)'` to prevent the error
+  `Compressor detection can only be called ...`
+  - See [here](https://github.com/elasticsearch-dump/elasticsearch-dump#module-transform) for more info on `--transform`
+- The above error can be entirely avoided if the input JSON is of the format as
+  in [here](https://github.com/elasticsearch-dump/elasticsearch-dump/blob/master/test/seeds.json)
+- [Example](https://stackoverflow.com/questions/64920407/elasticdump-with-tls-unable-to-verify-the-first-certificate)
+  command with https
+
+## ES Requests
+- To list all indices: `curl -XGET http://localhost:9200/_cat/indices`
+- To insert a document: `POST http://localhost:9200/_doc`
+- To delete a document: `DELETE http://localhost:9200/_doc/id`
+- To return all records
+```json
+{
+	"query": {
+		"match_all": {}
+	}
+}
+```
+- Deleting an index: `curl -XDELETE localhost:9200/shop`
+- Range query
+```json
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 10,
+        "lte": 20,
+        "boost": 2.0
+      }
+    }
+  }
+}
+```
+- Terms query
+```json
+{
+  "query": {
+    "terms": {
+      "user.id": [ "kimchy", "elkbee" ],
+      "boost": 1.0
+    }
+  }
+}
+```
+- Use `term` to check for a single value
+- [Bodybuilder to ES Query](https://bodybuilder.js.org/)

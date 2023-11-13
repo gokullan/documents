@@ -167,7 +167,7 @@ new_arr = arr.map((e) => e + 1);
 -   `decodeURIComponent`
 
 ## Cookies
--   (js-cookie documentation)[https://www.npmjs.com/package/js-cookie/v/3.0.5]
+-   [js-cookie documentation](https://www.npmjs.com/package/js-cookie/v/3.0.5)
 
 ## Scopes
 -   Note: Functions are actually objects in JavaScript
@@ -191,6 +191,7 @@ new_arr = arr.map((e) => e + 1);
     ```
 -   JS has functional scoping - any variable created within a function is available only inside that function
     -   Method args create (new) locally scoped variables (write operation)
+        (clarify &#x2753;)
     -   If you use a variable without declaring, it is okay to do a write operation, but not a read
 -   Why global vars are an issue?
     -   All JS scripts of a given webpage have the same namespace. This means that:
@@ -201,7 +202,7 @@ new_arr = arr.map((e) => e + 1);
     -   Since a function is an object, the function name also becomes a global variable and we are back to $1^2$
     -   Here is a workaround
     ```js
-    (function test() {
+    (function () {
         // function body
     })()  // this is immediately invoked after the script is loaded
     ```
@@ -248,7 +249,7 @@ var a = 10;
         fn2();
     } 
 
-    functions fn2() {
+    function fn2() {
         fn1();
     }
     ```
@@ -257,7 +258,7 @@ var a = 10;
         declaration results in a function object being created in the
 compilation step itself).
 -   Strict mode: Place `"use strict";` at the top of the JS file. (can also be
-    applied to just a function)
+    applied to just a function) (Why is strict mode needed &#x2753;)
 
 ## Closures
 -   For a JS function expression, the scope information* is also attached to the
@@ -370,6 +371,47 @@ data.sort(function (a, b) {
     return a.time.localeCompare(b.time);
 });
 ```
+
+### JS Under the Hood
+- Thread of execution
+  - JS is single threaded and synchronous (but with asynchronous capabilities)
+  - A thread has a call stack and memory
+  ```js
+  // check the call stack
+  function first() {
+    console.log("First");
+    second();
+  }
+  function second() {
+    console.log("Second");
+    second();
+  }
+  function third() {
+    console.log("Third");
+    second();
+  }
+  first();
+  ```
+  - Call stack manages execution context (Global Execution Context is at the
+    bottom of the call stack)
+- Execution context
+  - A special environment for transformation and execution of JS code
+  - 2 types: global and functional
+  - 2 phases:
+    - Memory Creation
+      - Creates global object
+      - Creates `this` and binds to the global object
+      - Stores functions and sets variables to `undefined`
+    - Execution
+      - Executes code line by line
+      - Creates new EC for every function call
+  - ![Global EC creation example](./images/globalContextExample.jpg)
+    - During this phase, `x` and `y` are created in the global scope and set to
+      `undefined`
+  - ![Functional EC](./images/functionContextExample.jpg)
+- `let` vs. `var`
+  - ![Scope of let](./images/letScope.jpg)
+  - ![let vs. var](./images/varLet.jpg)
 
 Doubts
 

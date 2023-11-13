@@ -264,6 +264,10 @@ Commands
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
+## Highlight
+- `set hlsearch`
+- `:noh` to turn off highlight until next search
+
 -   [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)
     -   `gt` or `gT` for sequential switching
     -   `xgt` or `xgT` or `:tabn x` to move to the tab number `x`
@@ -288,18 +292,51 @@ Commands
     -   `t` to open in a new tab
     -   Configuring
         -   [Set autonumbering](https://stackoverflow.com/questions/8730702/how-do-i-configure-vimrc-so-that-line-numbers-display-in-netrw-in-vim): Add `let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'` to ~/.vimrc
+    - For tree-view listing of directory, set `g:netrw_liststyle` to 3
+    - [Quick Reference Guide](https://gist.github.com/t-mart/610795fcf7998559ea80)
 
 -   [Vundle Plugin Manager]
     -   [Tutorial](https://linuxhint.com/vim-vundle-tutorial/)       
     -   [`PluginSearch` error](https://github.com/VundleVim/Vundle.vim/issues/599) 
 
+- vim-plug 
+  - In the installation instruction provided, the line
+    `${XDG_DATA_HOME:-$HOME/.local/share}` may cause issues
+
 -  YouCompleteMe
    -   [JS
-       Autocomplete](https://blog.prismatik.com.au/snippets-in-vim-43cf2ad79000)
+       Autocomplete](https://blog.priDsmatik.com.au/snippets-in-vim-43cf2ad79000)
+
+- Conquer of Completion (`coc.nvim`)
+  - Use vim-plug and the `release` branch
+  - Update Node path if needed (`g:coc_node_path`)
+  - [List of extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions) 
+  - For key mappings in lua, see [here](https://github.com/neoclide/coc.nvim/discussions/3776)
 
 -  Viewing Variables
    -    `:set all`
    -    [Variables associated with a plugin](https://stackoverflow.com/questions/62943877/how-to-view-all-variables-associated-with-a-plugin-in-vim)
+   - `echo g:variable_name` to view a specific variable
+
+## Key Bindings
+- `<C-R>` - Carriage-Return
+- `<Leader>` - `\` key by default
+
+## Debugging
+- [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
+  - `pip3 install pynvim`
+  - For NodeJS, use the gadget `vscode-js-debug`
+- [Using vim-dap (and vim-dap-ui)](https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/)
+  - It may be required to patch/ change the terminal font to render icons for vim-dap-ui
+  - See `linux_commands.markdown` and [this link](https://github.com/rcarriga/nvim-dap-ui/issues/257).
+
+## Lua
+- `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))` to view runtimepaths
+### References
+- [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
+- [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
+- [Neovim config sample - 1](https://github.com/miltonllera/neovim-config)
+- [Ujjwaleshwar's config](https://github.com/Ujs113/nvim-config/tree/main)
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
@@ -312,4 +349,9 @@ Commands
 
 **Plugins**
 -   [Markdown Preview for Neo-vim](https://github.com/iamcco/markdown-preview.nvim)
+    -   For emojis, refer [here](https://www.webfx.com/tools/emoji-cheat-sheet/)
+        for unicodes and
+        [here](https://stackoverflow.com/questions/34538879/unicode-emojis-in-github-markdown)
+        for the markdown syntax
 -   Netrw (inbuilt with vim)
+- [VimAwesome](https://vimawesome.com/) for plugin documentation
