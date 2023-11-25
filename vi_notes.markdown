@@ -263,6 +263,7 @@ Commands
 -   Fix indentation: \`gg\`, then \`=G\`
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
+- [Tabs vs. Windows vs. Buffers](https://vi.stackexchange.com/questions/11072/is-it-possible-to-open-a-tab-in-a-window-and-not-a-window-in-a-tab)
 
 ## Highlight
 - `set hlsearch`
@@ -312,6 +313,7 @@ Commands
   - Update Node path if needed (`g:coc_node_path`)
   - [List of extensions](https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#implemented-coc-extensions) 
   - For key mappings in lua, see [here](https://github.com/neoclide/coc.nvim/discussions/3776)
+  - `coc-format-json` for JSON fomatting. (`:CocCommand formatJson`)
 
 -  Viewing Variables
    -    `:set all`
@@ -329,6 +331,7 @@ Commands
 - [Using vim-dap (and vim-dap-ui)](https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim/)
   - It may be required to patch/ change the terminal font to render icons for vim-dap-ui
   - See `linux_commands.markdown` and [this link](https://github.com/rcarriga/nvim-dap-ui/issues/257).
+- Use `persisted-breakpoints.nvim` for breakpoints-persistance. Check [this](https://github.com/mfussenegger/nvim-dap/issues/198) issue for more details.
 
 ## Lua
 - `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))` to view runtimepaths

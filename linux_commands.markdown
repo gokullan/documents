@@ -1,12 +1,17 @@
-Linux Commands
+# Linux Commands
 -   Adding to `$PATH`: `export $PATH="$PATH:/path/to/add"`
--   Using grep
 
-    -   to search all files and folders:* grep -r word dir-name*
-    -   see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
-    -   Multiple patterns: `grep 'pattern1|pattern2' file`
-    -   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
-    -   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
+## Using `grep`
+-   to search all files and folders:* grep -r word dir-name*
+-   see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
+-   Multiple patterns: `grep 'pattern1|pattern2' file`
+-   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
+-   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
+- `grep -Pzo <pattern>` to do multi-line search patterns
+  - Refer [here](https://stackoverflow.com/questions/152708/how-can-i-search-for-a-multiline-pattern-in-a-file) for alternatives
+- Using regex
+  - [List of regex character sets](https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html) that can be used in grep.
+  - Example `grep "[[:alunum:][:space:]]"`
 
 -   To run shell script
 

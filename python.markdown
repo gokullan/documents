@@ -441,3 +441,16 @@ EXCEPTION HANDLING
 
 -   Use `global varname` if the global variable `varname` is being assigned inside a function. 
     Refer [here](https://stackoverflow.com/questions/10851906/python-3-unboundlocalerror-local-variable-referenced-before-assignment) for explanation.
+
+## Encoding-decoding
+```python
+import base64
+
+s = "my string"
+# convert to 'bytes' class
+s_bytes = s.encode("utf-8")
+# encode to base64
+encoded_bytes = base64.b64encode(s_bytes)
+decoded_bytes = base64.b64decode(encoded_bytes)
+decoded_str = decoded_bytes.decode("utf-8")
+```

@@ -190,6 +190,15 @@
 - **Note**: Once `mergetool` is opened, do not quit until the conflicts are
   resolved.
 
+### `git difftool`
+- `git difftool --tool=nvimdiff <filename>` to view differences between the previous commit and the current state of the file
+- Not applicable for staged files (works only for tracked, modified files)
+- [nvimdiff docs](https://neovim.io/doc/user/diff.html)
+
+### `git config`
+- Used to define variables used by various git commands
+- `git config --local diff.tool nvimdiff`
+
 **Pushing from a local repository branch (master) to a (my) GitHub
 repository (set as remote origin) branch (main)**
 
