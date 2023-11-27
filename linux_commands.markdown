@@ -59,11 +59,14 @@ sudo find / -name "xelatex"
   - `cat source.c | xclip -selection c`
   - Use `-r` flag to remove newline at the end of selection
 
--   To find (or locate) a file and open it using xdg-open
+- Using `xdg-mime` to open application urls
+  - For mattermost: `xdg-mime default Mattermost.desktop x-scheme-handler/mattermost`
+    - This opens URLs that start with `mattermost://...` in the mattermost desktop application
+  - [Reference](https://stackoverflow.com/questions/2060284/how-to-use-the-xdg-mime-command)
 
-find \~/ -iname \"linux_commands.odt\" \| xargs xdg-open
-
--   -   <https://stackoverflow.com/questions/17124288/xdg-open-doesnt-work-when-another-commands-output-is-piped-to-it>
+- To find (or locate) a file and open it using xdg-open
+`find ~/ -iname "linux_commands.odt" | xargs xdg-open`
+  - [Reference](https://stackoverflow.com/questions/17124288/xdg-open-doesnt-work-when-another-commands-output-is-piped-to-it)
 
 -   To search for a word in a file (starting from any directory)
 

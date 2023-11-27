@@ -225,9 +225,12 @@ Rebasing
    Overflow](https://stackoverflow.com/questions/31252363/how-to-get-rid-of-you-are-currently-editing-a-commit)
 
 ## Stash
+- `git stash list`
 - `git stash push -m "Stash message"` to save a stash with message 
+- `git stash push -m "particular_files_only" /path/to/file` to stash only specific files
 - `git stash pop` to pop the (topmost) stash and apply the changes
 - `git stash drop stash@{n}` to drop a specific stash
+- `git stash show` to show files in the topmost stash
 
 Meilisearch
 

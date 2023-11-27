@@ -46,7 +46,16 @@ SELECT CASE expression
 ```
 
 ## Date
--   `yyyy-mm-dd hh:mm:ss` format
+-   `yyyy-mm-dd hh:mm:ss +0530` format
+
+## `jsob` 
+- Update a `jsonb` field
+```sql
+update table_t set json_col=
+jsonb_set(json_col,'{dict,org,employees,3}',
+'{"name":"tom", "email": "tom@gmail.com" }')
+```
+where 3 refers to an index
 
 ## Resources
 -   [ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
