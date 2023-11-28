@@ -198,6 +198,12 @@
 ### `git config`
 - Used to define variables used by various git commands
 - `git config --local diff.tool nvimdiff`
+- `git config --list`
+
+### `git rebase`
+- `git rebase -i <commit-ID>~1`
+  - Allows user to delete certain commits (the `-i` flag) starting from `<commit-ID>`
+  - Reference [1](https://stackoverflow.com/questions/1338728/how-do-i-delete-a-commit-from-a-branch), [2](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase)
 
 **Pushing from a local repository branch (master) to a (my) GitHub
 repository (set as remote origin) branch (main)**
