@@ -174,7 +174,7 @@ i=\`expr \$i + 1\`
 Use *sudo apt install vim-gtk3 *instead of *vim-gnome* (to use +
 register)
 
-Commands
+# Vim
 
 -   G -- last line
 
@@ -182,6 +182,8 @@ Commands
 
 -   To comment: Ctrl V + Shilf+I + '// ' + Esc (similar controls for
     uncommenting)
+
+## Copy-pasting
 
 -   Copy to other registers (`+` and `*`)
     -   `"*y` to copy current line
@@ -199,6 +201,11 @@ Commands
 -   Copy to system clipboard in visual mode
 
     -   Select text and type "+y
+
+-   Copying to clipboard (if not complied with `xclip`)
+    -   Install `xclip` (`sudo apt install xclip`)
+    -   Yank the required lines: this will be stored in the `"0` register
+    -   `:call system('xclip -sel clipboard', @0)`
 
 -   Select all: ggVG or ggy\$
 
@@ -263,22 +270,22 @@ Commands
 -   Fix indentation: \`gg\`, then \`=G\`
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
-- [Tabs vs. Windows vs. Buffers](https://vi.stackexchange.com/questions/11072/is-it-possible-to-open-a-tab-in-a-window-and-not-a-window-in-a-tab)
 
 ## Highlight
 - `set hlsearch`
 - `:noh` to turn off highlight until next search
 
--   [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)
+## Windows, Tabs and Buffers
+- [Tabs vs. Windows vs. Buffers](https://vi.stackexchange.com/questions/11072/is-it-possible-to-open-a-tab-in-a-window-and-not-a-window-in-a-tab)
+- [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)
     -   `gt` or `gT` for sequential switching
     -   `xgt` or `xgT` or `:tabn x` to move to the tab number `x`
     -   `:tabmove x` to physically move the tab
     -   `wqa` or `qa` to close all tabs
-
--   Copying to clipboard (if not complied with `xclip`)
-    -   Install `xclip` (`sudo apt install xclip`)
-    -   Yank the required lines: this will be stored in the `"0` register
-    -   `:call system('xclip -sel clipboard', @0)`
+- `:new filename` for a horizontal split; `:vert new filename` (OR) `vnew filename` for horizontal split
+  - `set splitbelow` and `set splitright` to change default behaviour respectively
+- To execute the currently open `.sh` file and redirect output to a vertical window, do `:vnew | read !bash #`
+  - [Reference](https://superuser.com/a/868955/1653516)
 
 
 -   [Using the Netrw File Explorer](https://vonheikemen.github.io/devlog/tools/using-netrw-vim-builtin-file-explorer/)

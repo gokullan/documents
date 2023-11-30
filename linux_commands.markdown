@@ -586,6 +586,16 @@ dconf write '/org/gnome/terminal/legacy/profiles:/:PROFILE_ID/font' "'FreeMono 1
     `*/30 9-17 * * 1-5 command_to_run`
 -   [Online tool](https://crontab.guru/)
 
+## `source`
+- To reference variables from another file:
+```bash
+source extFile.sh
+echo "This is $someVarFromExtFile"
+```
+
+## Misc
+- Use `json_pp` to prettify json
+
 Other questions and stuff to look into
 
 -   MATLAB versions
