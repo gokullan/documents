@@ -88,5 +88,15 @@
   }
 }
 ```
+- exists
+```json
+{
+  "query": {
+    "exists": {
+      "field": "field_name"
+    }
+  }
+}
+```
 - Use `term` to check for a single value
 - [Bodybuilder to ES Query](https://bodybuilder.js.org/)

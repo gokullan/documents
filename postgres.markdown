@@ -56,6 +56,11 @@ jsonb_set(json_col,'{dict,org,employees,3}',
 '{"name":"tom", "email": "tom@gmail.com" }')
 ```
 where 3 refers to an index
+- Checking boolean values
+```sql
+SELECT * FROM table
+WHERE (data->>'bool_property')::boolean
+```
 
 ## Resources
 -   [ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
