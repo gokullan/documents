@@ -237,6 +237,10 @@ Rebasing
 - `git stash pop` to pop the (topmost) stash and apply the changes
 - `git stash drop stash@{n}` to drop a specific stash
 - `git stash show` to show files in the topmost stash
+- `git difftool stash@{0} -- filename` to find the differences of the stashed changes with ...?
+- `git stash -- $(git diff --staged --name-only)` to stash only staged file
+- `git restore --source=stash@{0} -- <filename>` to apply only certain stashed files 
+  - See [here](https://stackoverflow.com/questions/15264553/how-to-unstash-only-certain-files) for other alternatives
 
 Meilisearch
 
