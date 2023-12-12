@@ -413,6 +413,10 @@ data.sort(function (a, b) {
   - ![Scope of let](./images/letScope.jpg)
   - ![let vs. var](./images/varLet.jpg)
 
+## Loadash
+- `_.sortBy(arr)`
+- `_.isEqual(arr1, arr2)` - checks order as well
+
 Doubts
 
 -   document.write() vs writeln()
