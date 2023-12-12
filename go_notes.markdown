@@ -134,6 +134,35 @@ func main() {
 - Group II
 ![pointer-groups](./images/goGroupB.jpg)
 
+## File structure
+- Package
+  - Can be thought of as directories (?)
+  - Multiple `.go` source files can fall within the scope of a package; but a single file cannot belong to more than 1 package
+  - A package can be defined recursively as follows: Stand-alone `.go` files + other packages 
+```go
+package "some-name"  // all files belonging to this package has to start with this
+// some functions
+```
+- Modules - Each go project has a `go.mod` file which looks something like this:
+```go
+module "github.com/user-1/my-module-name"
+
+require (
+  "github.com/user-2/some-other-module"
+)
+```
+- Using packages
+```go
+import (
+  "github.com/user-1/my-module-name/my-package"
+)
+```
+![fileStructure](./images/goFileStructure.png)
+- Red: `.go` source file
+- Purple: package
+- Green: module
+- Orange: main file
+
 ## References
 - Standard Library -> [builtin](https://pkg.go.dev/builtin@go1.21.3)
 - [Specs](https://go.dev/ref/spec#Numeric_types)
