@@ -47,14 +47,26 @@ Latex
 
 -   Integral a -\> b (f(x) dx) : int\_{a}\^{b}f(x)dx
 
--   Piecewise functions:
-    <https://tex.stackexchange.com/questions/32140/how-to-write-a-function-piecewise-with-bracket-outside>
+- Piecewise functions:
+  <https://tex.stackexchange.com/questions/32140/how-to-write-a-function-piecewise-with-bracket-outside>
 
-    \\\[ \\begin{cases}
+  \\\[ \\begin{cases}
 
-    -   0 & x\\leq 0 \\\\ \...
+  -   0 & x\\leq 0 \\\\ \...
 
-    \\end{cases} \\\]
+  \\end{cases} \\\]
+  
+    - Below uses arrays (can be used in Mattermost, Jupyter)
+    - Reference [1](https://stackoverflow.com/questions/54281104/how-to-write-piecewise-function-in-jupyter-notebook-markdown)
+    ```latex
+    N(a) = \left\{
+    \begin{array}{ll}
+          n_o & A>A_{krit} \\
+          n_o+2 & A=A_{krit} \\
+          n_o+4 & A<A_{krit} \\
+    \end{array} 
+    \right.
+    ```
 
 -   <https://tex.stackexchange.com/questions/258192/how-can-i-make-a-math-version-of-itemize-enumerate-and-description-environment>
 
@@ -177,6 +189,11 @@ Latex
 -   Graphs
 
     -   <https://tex.stackexchange.com/questions/57152/how-to-draw-graphs-in-latex>
+
+- Monospace font
+  - `\texttt{...}`
+  - `\verb|...|`
+  - Note: underscores need to be escaped
 
 -   [Bibliography](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex)
     -   [Converters](https://www.bibtex.com/converters/)
