@@ -271,6 +271,19 @@ register)
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
+- Copy filename
+  - [Reference](https://stackoverflow.com/a/64225287/13711617)
+  ```
+  " relative path
+  :let @+ = expand("%")
+  
+  " full path
+  :let @+ = expand("%:p")
+  
+  " just filename
+  :let @+ = expand("%:t")
+  ```
+
 ## Highlight
 - `set hlsearch`
 - `:noh` to turn off highlight until next search
@@ -365,3 +378,6 @@ register)
         for the markdown syntax
 -   Netrw (inbuilt with vim)
 - [VimAwesome](https://vimawesome.com/) for plugin documentation
+
+## Add comments/ answers
+- [Can't open /tmp/...](https://stackoverflow.com/q/19697710/13711617)
