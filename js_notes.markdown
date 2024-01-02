@@ -86,6 +86,13 @@ array2 = [...array1];
         -   Needed to ensure characters like `&` are not interpreted incorrectly
     -   The encoding is done based on UTF-8 encoding
 
+## Functions
+```js
+return new Function(arg1, arg2, ..., fnBody);
+```
+- All variables in the function body should be passed as arguments?
+  - It's not enough if those variables are present in any outer scope?
+
 ## String Manipulation
 -   `stringName.toUpperCase()` (OR) `stringName.toLowerCase()`
 -   `stringName.repeat(x)`
@@ -114,6 +121,7 @@ array2 = [...array1];
 -   sort
 
 -   filter() - to return a filtered array
+- `array.shift()` deletes and returns the first element
 ```js
 arrayName.filter((element)=> {
     return this.element == something
@@ -416,6 +424,17 @@ data.sort(function (a, b) {
 ## Loadash
 - `_.sortBy(arr)`
 - `_.isEqual(arr1, arr2)` - checks order as well
+- `_.isNil` - checks null or undefined
+- `_.forOwn` - to iterate objects (`forEach` ?)
+- `_.castArray` - convert to array-like
+- `_.chain` - to perform multiple (Loadash) functions on a single object
+```js
+_.chain(stdout)
+      .split("\n")
+      .map((_event) => _.trim(_event))
+      .uniq()
+      .compact().value()
+```
 
 Doubts
 
