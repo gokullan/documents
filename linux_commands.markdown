@@ -8,13 +8,29 @@
 -   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
 -   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
 - `grep -Pzo <pattern>` to do multi-line search patterns
+  - The `z` flag takes the entire file(s?) as input as opposed to truncating at new-line (which is the default behaviour) 
   - Refer [here](https://stackoverflow.com/questions/152708/how-can-i-search-for-a-multiline-pattern-in-a-file) for alternatives
 - Using regex
   - [List of regex character sets](https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html) that can be used in grep.
   - Example `grep "[[:alunum:][:space:]]"`
+  - [Regex with recursion](https://www.regular-expressions.info/recurse.html#balanced)
+
+## Using `sed`
+- Short "Stream Editor"
+- Find and replace: `sed 's/Pineapple/Orange/' fruits.txt`
+  - Above doesn't actually overwrite the file
+  - Use `sed -i` to change in-place
+- Delimiter: Character that directly follows 's'
+  - Eg: `sed 's./etc/./something/.' paths.txt` - to replace `/etc/` with `/something/`
+- Grouping: Works same as vim search
+  - Eg: `echo "Hello, World" | sed 's/\(.\+,\)\(.\+\)/\1 Everybody/'`
+- [Reference](https://docstore.mik.ua/orelly/unix/sedawk/appa_03.htm)
+- Use `p` at the end to paste the lines that have been modified
+  - Eg: `echo -e "We were in Paries\nHello, World" | sed -n 's/\(.\+,\)\(.\+\)/\1 Everybody/p'`
+  - `-n` is used to suppress displaying output
+- Use `-z` to stop truncation at newline
 
 -   To run shell script
-
 *chmod +x /path/to/yourscript.sh*
 
 */path/to/yourscript.sh*
@@ -128,7 +144,9 @@ man grep \| grep \-- -l
 
     -   
 
--   **Tip**: Use ANSI C Quoting with echo: echo\$'Hello\\nWorld!!!'
+- `echo`
+  - Use ANSI C Quoting with echo: echo\$'Hello\\nWorld!!!'
+  - `echo -e "Hello\nWorld"`;
 
 -   Passing strings to commands that expect file
 
