@@ -2,11 +2,12 @@
 -   Adding to `$PATH`: `export $PATH="$PATH:/path/to/add"`
 
 ## Using `grep`
--   to search all files and folders:* grep -r word dir-name*
--   see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
--   Multiple patterns: `grep 'pattern1|pattern2' file`
--   `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
--   `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
+- to search all files and folders:* grep -r word dir-name*
+- Pipe with `| sort` to get sorted results (based on filename)
+- see [here](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output) on how to search the output `--help`
+- Multiple patterns: `grep 'pattern1|pattern2' file`
+- `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
+- `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
 - `grep -Pzo <pattern>` to do multi-line search patterns
   - The `z` flag takes the entire file(s?) as input as opposed to truncating at new-line (which is the default behaviour) 
   - Refer [here](https://stackoverflow.com/questions/152708/how-can-i-search-for-a-multiline-pattern-in-a-file) for alternatives
