@@ -50,10 +50,11 @@
 - [Example](https://stackoverflow.com/questions/64920407/elasticdump-with-tls-unable-to-verify-the-first-certificate)
   command with https
 
-## ES Requests
-- To list all indices: `curl -XGET http://localhost:9200/_cat/indices`
-- To insert a document: `POST http://localhost:9200/_doc`
-- To delete a document: `DELETE http://localhost:9200/_doc/id`
+## Query DSL
+- [Query vs. filter context](https://stackoverflow.com/questions/14595988/queries-vs-filters)
+- Use match-query for full-text search; term-query for exact field match
+- Use `"size"` parameter (outside "query") to specify the number of results to be returned (max (default): 10000)
+- Use `"_source: ["field1", "field2"]` to return only specific fields
 - To return all records
 ```json
 {
@@ -62,7 +63,6 @@
 	}
 }
 ```
-- Deleting an index: `curl -XDELETE localhost:9200/shop`
 - Range query
 ```json
 {
@@ -98,5 +98,73 @@
   }
 }
 ```
-- Use `term` to check for a single value
+- Deleting based on condition
+`GET /index-name/_delete_by_query`
+```
+{
+  "query": { }
+}
+```
+- Aggregation (check mapping before using)
+  - `agg-type` (below) can be `terms`, `cardinality`, ...
+```json
+{
+  "aggs": {
+    "your-agg-name": {
+      "agg-type": {
+        "field": "your-field-name"
+      }
+    }
+  }
+}
+```
+- Use sub-aggregation for filtering results of aggregation
+`POST /ind-logstash-worker-order_messaging-2024.01.03/_search?size=0&filter_path=aggregations
+{
+  "aggs": {
+    "test": {
+      "filter": {
+        "match": {
+          "requestId.raw": "d5e728c2-4ccf-4208-aa75-24c68b149720"
+        }
+      },
+      "aggs": {
+        "distinctIds": {
+          "terms": {
+            "field": "requestId.raw"
+          }
+        }
+      }
+    }
+  }
+}`
+```json
+{
+  "aggs": {
+    "test": {
+      "filter": {
+        "match": {
+          "requestId.raw": "d5e728c2-4ccf-4208-aa75-24c68b149720"
+        }
+      },
+      "aggs": {
+        "distinctIds": {
+          "terms": {
+            "field": "requestId.raw"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 - [Bodybuilder to ES Query](https://bodybuilder.js.org/)
+
+## ES Requests
+- To list all indices: `curl -XGET http://localhost:9200/_cat/indices`
+- To list all indices matching a pattern: `GET /_cat/indices/ind-*`
+- To insert a document: `POST http://localhost:9200/_doc`
+- To delete a document: `DELETE http://localhost:9200/_doc/id`
+- Deleting an index: `curl -XDELETE localhost:9200/shop`
+- To check mapping: `GET /index-name/_mapping`
