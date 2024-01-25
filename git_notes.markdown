@@ -181,6 +181,7 @@
 
 ### Pulling a change from multiple branches
 - `git cherry-pick [commit-id]`
+  - [What is cherry-picking](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean)
   - In case of conflict, resolve conflict and do `git commit --no-verify`
   - [Reference](https://stackoverflow.com/questions/65224262/how-do-you-git-cherry-pick-continue-with-no-verify)
 
@@ -241,6 +242,10 @@ Rebasing
 - `git stash -- $(git diff --staged --name-only)` to stash only staged file
 - `git restore --source=stash@{0} -- <filename>` to apply only certain stashed files 
   - See [here](https://stackoverflow.com/questions/15264553/how-to-unstash-only-certain-files) for other alternatives
+
+## `.gitignore`
+- To ignore already tracked files, add to .gitignore, then do `git rm --cached file`
+  - [Reference](https://stackoverflow.com/a/1274447/13711617)
 
 Meilisearch
 
