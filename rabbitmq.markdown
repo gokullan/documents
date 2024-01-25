@@ -29,5 +29,6 @@
         lot of resources.
 
 ## Resources
--   [ByteByteGo E-commerce
+- [ByteByteGo E-commerce
     example](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
+- [Ready vs. Unacked](https://stackoverflow.com/questions/31915773/rabbitmq-what-are-ready-and-unacked-types-of-messages)
