@@ -8,6 +8,7 @@
 - Multiple patterns: `grep 'pattern1|pattern2' file`
 - `grep -- -patternBeginningWithHyphen file` to [search for patterns that begin with hyphen](https://askubuntu.com/questions/1164743/how-to-use-grep-to-search-through-the-help-output)
 - `grep pattern --exclude-dir=dirname --exclude=\*.cpp`
+  - [Specifying multiple files/ folders](https://superuser.com/questions/509601/grep-multiple-exclude-extension)
 - `grep -Pzo <pattern>` to do multi-line search patterns
   - The `z` flag takes the entire file(s?) as input as opposed to truncating at new-line (which is the default behaviour) 
   - Refer [here](https://stackoverflow.com/questions/152708/how-can-i-search-for-a-multiline-pattern-in-a-file) for alternatives
@@ -30,6 +31,7 @@
   - Eg: `echo -e "We were in Paries\nHello, World" | sed -n 's/\(.\+,\)\(.\+\)/\1 Everybody/p'`
   - `-n` is used to suppress displaying output
 - Use `-z` to stop truncation at newline
+- [Stopping at first match](https://unix.stackexchange.com/questions/180663/how-to-select-first-occurrence-between-two-patterns-including-them)
 
 -   To run shell script
 *chmod +x /path/to/yourscript.sh*
