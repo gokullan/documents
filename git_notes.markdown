@@ -167,7 +167,7 @@
 -   Modifying/ reverting commits
     -   Undo previous commit
     ```
-    git reset HEAD~
+    git reset --soft HEAD~
     # make necessary changes and commit again
     ```
     -   Checkout file to previous state and amend commit
