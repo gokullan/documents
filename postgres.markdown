@@ -48,7 +48,7 @@ SELECT CASE expression
 ## Date
 -   `yyyy-mm-dd hh:mm:ss +0530` format
 
-## `jsob` 
+## `jsonb` 
 - Update a `jsonb` field
 ```sql
 update table_t set json_col=
@@ -61,6 +61,8 @@ where 3 refers to an index
 SELECT * FROM table
 WHERE (data->>'bool_property')::boolean
 ```
+- Check if property exists: `... WHERE (json->'attribute') IS NOT null`
+- [jsonb indexing](https://youtu.be/p9RItyeKbLQ?si=YzFDNvW9c6F92hei)
 
 ## Resources
 -   [ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
