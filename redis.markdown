@@ -1,14 +1,16 @@
 # Redis
 
--   `set key value`
--   `exists key`
--   `get key`
--   `del key`
--   `flushall`
--   `keys regex`
--   `ttl key`
--   `expire key timeInSec`
--   `setex key timeInSec value`
+- `set key value`
+- `exists key`
+- `get key`
+- `del key`
+- `flushall`
+- `keys regex`
+- `ttl key`
+  - TTL -1 implies no expiry; -2 means key not found
+- `expire key timeInSec`
+- `setex key timeInSec value`
+- `KEYS *` to list all keys
 
 ## Lists
 -   `lpush`

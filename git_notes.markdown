@@ -29,7 +29,7 @@
     -   git status
 
     -   Add to staging: git add \<file\> (Add everything to staging: git
-        add . )
+        add . ) (How is it different from `git add -u .`)
 
     -   Remove from staging: git rm --cached \<file\>
 
@@ -38,14 +38,14 @@
 
     -   allows to have separate commits for separate changes
 
--   Commit
+- Commit
+  - git commit -m "\<descriptive message of what the commit is
+    about\>"
 
-    -   git commit -m "\<descriptive message of what the commit is
-        about\>"
+  - To view commit history: git log (OR) git log \--oneline
 
-    -   To view commit history: git log (OR) git log \--oneline
-
-    -   To get a graph of commits do `git log --graph --decorate  --oneline --all`  
+  - To get a graph of commits do `git log --graph --decorate  --oneline --all`  
+  - To view commit history for a specific file: `git log -p -- filename`
 
 -   Uploading to GitHub from a local repository
 
@@ -99,7 +99,9 @@
 -   Make a new branch
 
     -   git checkout -b branch-name
-
+- Deleting a branch
+  - `git branch -d branch-name`
+    - The `-D` flag: ["The branch ... is not fully merged"](https://stackoverflow.com/questions/7548926/git-error-the-branch-x-is-not-fully-merged)
 -   Using git with Jupyter Notebook/ Colab
 
     -   <https://blog.reviewnb.com/jupyter-version-control/>
@@ -242,6 +244,12 @@ Rebasing
 - `git stash -- $(git diff --staged --name-only)` to stash only staged file
 - `git restore --source=stash@{0} -- <filename>` to apply only certain stashed files 
   - See [here](https://stackoverflow.com/questions/15264553/how-to-unstash-only-certain-files) for other alternatives
+- Renaming a stash
+  - `git show stash@{n}` to get the stash hash
+  - `git stash store -m "Description" hash`
+    (`On branch ...` which is the default start-name for stashes will not be present)
+  - Delete old stash
+  - [Reference](https://stackoverflow.com/questions/25931026/how-can-i-rename-a-git-stash)
 
 ## `.gitignore`
 - To ignore already tracked files, add to .gitignore, then do `git rm --cached file`
