@@ -2,6 +2,9 @@
 
 - "Fast, statically-typed, compiled programming language"
 
+## Creating a module
+TODO
+
 ## Functions
 - Only one `main` function should be present inside the application
 ```go
@@ -57,6 +60,7 @@ fmt.Print(scores[1:3])
 ```go
 func exploringArraysAndSlices() {
   arr := [...]int{1, 2, 3} // `...` is alternate to specifying the exact length
+  // variadism - https://go.dev/ref/spec#Passing_arguments_to_..._parameters
   slice1 := []int{1, 2, 3}
   slice2 := make([]int, 3, 5) // make(type, length, capacity)
   // slice2[4] = 2 // ERROR!
@@ -271,11 +275,10 @@ require (
 - Using packages
 ```go
 import (
-  "github.com/user-1/my-module-name/my-package"on.(*encodeState).marshal(0xc0a0c7a000, 0x15ffa40, 0xc09cf54480, 0x440100, 0x0, 0x0) 
-	/usr/local/go/src/encoding/json/encode.go:305 +0xf4 
-encoding/json.Marshal(0x15ffa40, 0xc09cf54480, 0x15ffa40, 0xc09cf54480, 0x7, 0x0, 0x0) 
-	/usr/local/go/src/encoding/json/encode.go:160 +0x52 
+  "my-module/my-package/dir-name"
 )
+// assuming dir-name defines a package `mine`
+mine.DoSomething()
 ```
 ![fileStructure](./images/goFileStructure.png)
 - Red: `.go` source file
@@ -443,6 +446,14 @@ func ExploringLogger() {
   - `Kind` gives the "kind of value" (for `Value`)
 
 ## `net/http`
+
+## `age`
+- [Docs](https://pkg.go.dev/filippo.io/age)
+```
+// generate key-pair
+// encrypt data with (public-key) receiver; save in *.age file
+// decrypt using identifier (file with private key)
+```
 
 ## References
 - Standard Library -> [builtin](https://pkg.go.dev/builtin@go1.21.3)

@@ -202,6 +202,8 @@
 - Used to define variables used by various git commands
 - `git config --local diff.tool nvimdiff`
 - `git config --list`
+- `git config --global credential.helper store`
+- `git config --global unset credential.helper`
 
 ### `git rebase`
 - `git rebase -i <commit-ID>~1`

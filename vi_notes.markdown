@@ -288,6 +288,13 @@ register)
 - `set hlsearch`
 - `:noh` to turn off highlight until next search
 
+## Recording
+- `q<letter>` (recording starts) &rarr; `q` (recording stops) &rarr; `n@<letter>` to playback the recording `n` times
+- [Reference](https://stackoverflow.com/questions/1527784/what-is-vim-recording-and-how-can-it-be-disabled)
+
+## `:g`
+- `%g/pattern/d[n]` - deletes line matching pattern
+
 ## Windows, Tabs and Buffers
 - [Tabs vs. Windows vs. Buffers](https://vi.stackexchange.com/questions/11072/is-it-possible-to-open-a-tab-in-a-window-and-not-a-window-in-a-tab)
 - [Switching tabs](https://www.vimfromscratch.com/articles/vim-switching-tabs)

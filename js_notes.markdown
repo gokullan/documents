@@ -379,6 +379,11 @@ data.sort(function (a, b) {
     return a.time.localeCompare(b.time);
 });
 ```
+- Time (in millseconds since midnight at the beginning of January 1, 1970, UTC.)
+```js
+let date1 = new Date().getTime();
+let date2 = new Date(date1)
+```
 
 ### JS Under the Hood
 - Thread of execution
@@ -420,6 +425,8 @@ data.sort(function (a, b) {
 - `let` vs. `var`
   - ![Scope of let](./images/letScope.jpg)
   - ![let vs. var](./images/varLet.jpg)
+
+## Generator Functions
 
 ## Loadash
 - `_.sortBy(arr)`
