@@ -62,7 +62,15 @@ SELECT * FROM table
 WHERE (data->>'bool_property')::boolean
 ```
 - Check if property exists: `... WHERE (json->'attribute') IS NOT null`
+- JSON Path Expressions: 
+  - Example: `'$.line_items.*[*].status ? (@ == "Something")'`
+  - `*` is a wildcard; `?` is used for text-return; `@` refers to the current value
+- Operators
+  - `@>` : To check if jsonb on the right as present as a top-level element on the jsonb present on the left
+  - `@?`, `?`, `?|`, ...
+  - [Documentation](https://www.postgresql.org/docs/16/functions-json.html#FUNCTIONS-JSONB-OP-TABLE)
 - [jsonb indexing](https://youtu.be/p9RItyeKbLQ?si=YzFDNvW9c6F92hei)
+- [GIN Indexing Questions](https://postgrespro.com/list/thread-id/2663248)
 
 ## Resources
 -   [ntu.edu.sg](https://www3.ntu.edu.sg/home/ehchua/programming/sql/PostgreSQL_GetStarted.html)
