@@ -427,6 +427,62 @@ let date2 = new Date(date1)
   - ![let vs. var](./images/varLet.jpg)
 
 ## Generator Functions
+- A special function that returns an object of the form `{value: "someValue", done: false}`
+- Use cases
+  - For "infinite" loops (eg: a function returning a new ID each time when called)
+  - As iterators
+  ```js
+  while (!generatorObj.next().done) {
+    // do something
+  }
+  ```
+- From [MDN docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+```
+The next() method returns an object with a value property containing the yielded value and a done property which indicates whether the generator has yielded its last value, as a boolean. Calling the next() method with an argument will resume the generator function execution, replacing the yield expression where an execution was paused with the argument from next().
+```
+  - Since calling `next` with an argument will only *resume* execution, passing an argument to the first `next()` has no effect
+- Complete example
+```js
+function* myGenerator() {
+  let id = 1
+  while (true) {
+    console.log("while : Line 1")
+    let inc = yield id // to ensure `id` is yielded while also 
+    // providing a way to capture the arg of `next`
+    console.log(`inc = ${inc}`)
+    if (inc) {
+      console.log("inc not null")
+      inc += id
+      id += 1
+      console.log(`inc = ${inc}; id = ${id}`)
+    }
+    else {
+      console.log("inc null")
+      id += 1
+      console.log(`id = ${id}`)
+    }
+  }
+}
+
+function exploringGenerator() {
+  let generatorObj = myGenerator()
+  console.log(generatorObj.next())
+  console.log("---")
+  console.log(generatorObj.next())
+  console.log("---")
+  console.log(generatorObj.next())
+  console.log("---")
+  console.log(generatorObj.next(20))
+  console.log("---")
+  console.log(generatorObj.next())
+  console.log("---")
+}
+
+exploringGenerator()
+```
+- Use `generatorObj.return()` to yield for one last time (i.e.)
+  any execution after (and on) execution of this statement will return `done: true`
+- `generatorObj.throw(new Error("Some error"))` to throw error
 
 ## Loadash
 - `_.sortBy(arr)`
