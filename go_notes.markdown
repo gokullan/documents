@@ -455,6 +455,15 @@ func ExploringLogger() {
 // decrypt using identifier (file with private key)
 ```
 
+## `context`
+- Works at the "Transport" layer
+- Useful to pass info through to multiple layers (like request-id)
+  - Layers => Business-logic layer, data layer
+- Also used to initiate timeouts
+- `context.Context.Done()` channel, if closed, indicates that the "session" is complete
+  - `ctx.Err()` returs the error which lead to closure of the `context.Context.Done()`
+- [Reference video](https://youtu.be/h2RdcrMLQAo?si=2dU5SYZ-dlkNu-Kx)
+
 ## References
 - Standard Library -> [builtin](https://pkg.go.dev/builtin@go1.21.3)
 - [Specs](https://go.dev/ref/spec#Numeric_types)
