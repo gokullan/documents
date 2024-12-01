@@ -32,6 +32,11 @@
   - `-n` is used to suppress displaying output
 - Use `-z` to stop truncation at newline
 - [Stopping at first match](https://unix.stackexchange.com/questions/180663/how-to-select-first-occurrence-between-two-patterns-including-them)
+- [Substituting across multiple lines](https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string)
+
+## Strings and variable interpolation
+- `<<<` is used to provide string input. Eg. : `sed 's/a/b/g' <<< "aaa"`
+- [Single vs. double-quoting in strings](https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
 
 -   To run shell script
 *chmod +x /path/to/yourscript.sh*
