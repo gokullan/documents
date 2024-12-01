@@ -351,6 +351,9 @@ register)
 - `<C-R>` - Carriage-Return
 - `<Leader>` - `\` key by default
 
+## Mapping keys
+- Copying: `vnoremap cc "+yy` ([Reference](https://stackoverflow.com/questions/61177658/mapping-select-all-copy-paste-in-vim))
+
 ## Debugging
 - [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
   - `pip3 install pynvim`
@@ -362,6 +365,27 @@ register)
 
 ## Lua
 - `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))` to view runtimepaths
+
+## Find and replace across files
+```vim
+# filepaths set in `wildignore` will be ignored while searching
+:set wildignore+=*/node_modules/*
+:vimgrep /pattern-to-search/ files/**/*.js  # this populates the Quickfix list
+:cwindow # to display search results
+:cdo s/pattern/replacment/g 
+:cfdo update  # to write changes to files
+```
+- To add a line after a specific pattern
+```
+let line_to_add="myUrl: '\\/my\\/home\\/v1\\?qp1={val1}\\&qp2={val2}'"
+let pattern_to_match='\(\(.*\)wordToMatch:.*\)'
+cdo exec "%s" .. printf("/%s\\n/\\1\\r\\2%s\\r/g", pattern_to_match, line_to_add)
+```
+
+## Terminal mode
+- `:edit term://bash` to launch the terminal in split-window form
+- `<C-\><C-N>` to exit terminal-mode (after exiting terminal mode `<C-W><W>` can be used to switch windows)
+
 ### References
 - [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
 - [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
