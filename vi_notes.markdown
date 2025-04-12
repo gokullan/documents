@@ -348,11 +348,13 @@ register)
    - `echo g:variable_name` to view a specific variable
 
 ## Key Bindings
-- `<C-R>` - Carriage-Return
+- `<CR>` - Carriage-Return
 - `<Leader>` - `\` key by default
 
 ## Mapping keys
 - Copying: `vnoremap cc "+yy` ([Reference](https://stackoverflow.com/questions/61177658/mapping-select-all-copy-paste-in-vim))
+- [Key mapping in lua - GitHub](https://github.com/LunarVim/Neovim-from-scratch/blob/02-keymaps/lua/user/keymaps.lua)
+- [Searching for selected text - SuperUser](https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim)
 
 ## Debugging
 - [Using vimspetor](https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m)
@@ -386,11 +388,22 @@ cdo exec "%s" .. printf("/%s\\n/\\1\\r\\2%s\\r/g", pattern_to_match, line_to_add
 - `:edit term://bash` to launch the terminal in split-window form
 - `<C-\><C-N>` to exit terminal-mode (after exiting terminal mode `<C-W><W>` can be used to switch windows)
 
+## Registers
+- [How do I use vim registers? - StackOverflow](https://stackoverflow.com/questions/1497958/how-do-i-use-vim-registers)
+- [brianstorti.com](https://www.brianstorti.com/vim-registers/)
+- `<C-R>` - Ctrl + R (["insert" register contents](https://vim.fandom.com/wiki/Paste_registers_in_search_or_colon_commands_instead_of_using_the_clipboard))
+- `=` is the expression register (See "Searching for selected text" SuperUser link)
+
+## Autocommands
+TODO
+
 ### References
 - [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
 - [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
 - [Neovim config sample - 1](https://github.com/miltonllera/neovim-config)
 - [Ujjwaleshwar's config](https://github.com/Ujs113/nvim-config/tree/main)
+- [learnbyexample.github.io](https://learnbyexample.github.io/vim_reference/Normal-mode.html)
+- [vimhelp.org](https://vimhelp.org/windows.txt.html#window-tag)
 
 **Misc**
 -   Install `build-essential` and `libncurses-dev` before compiling vim from source
