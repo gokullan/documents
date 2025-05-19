@@ -207,6 +207,10 @@ register)
     -   Yank the required lines: this will be stored in the `"0` register
     -   `:call system('xclip -sel clipboard', @0)`
 
+-   Copying selected pattern
+    -   `y//e` 
+    -   [Reference](https://superuser.com/questions/288659/vim-yank-highlighted-text)
+
 -   Select all: ggVG or ggy\$
 
     -   Select and Copy: :%y
