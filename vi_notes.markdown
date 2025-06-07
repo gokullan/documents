@@ -416,6 +416,7 @@ TODO
     -   [Specifying the necessary flags](https://superuser.com/questions/235505/compiling-vim-with-xterm-clipboard-support)
 -   Refer [this link](https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source) to compile vim from source so that it is compatible with YouCompleteMe
 -   Backspace not working: Add `set backspace=indent,eol,start` to ~/.vimrc
+- Launch in "log-capturing" mode: `vim -V20vimlog`
 
 
 **Plugins**

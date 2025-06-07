@@ -645,3 +645,14 @@ Passwords
 
 -   MySQL: username- root; password: <CS@iitm91>
 -   Drupal: username- gokullan; password: <CS@iitm91>
+
+- `uname -r` to get kernel version
+- `install` command to copy files
+- `lsmod`, `modprobe`, `modinfo`: https://wiki.archlinux.org/title/Kernel_module#Setting_module_options; use `-vv` for verbose
+- `mkinitcpio`: https://wiki.archlinux.org/title/Mkinitcpio#Image_creation_and_activation
+- `zcat /proc/config.gz` to get kernel config
+- Nvidia driver installation
+  - https://bbs.archlinux.org/viewtopic.php?id=302266
+  - https://bbs.archlinux.org/viewtopic.php?id=222800
+- `pacman -Qs some-part-of-name`, `pacman -Ql full-name` (`Q` is for installed packages)
+- ALA (Arch Linux Archive); use `pacman -U <url>`

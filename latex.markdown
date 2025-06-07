@@ -87,6 +87,7 @@ Latex
     -   \\medskip or \\bigskip to give line break between ordinary
         paragraphs
     -   `\hspace{2mm}` for inline spacing (horizontal)
+    - `\vspace{2mm}` for vertical spacing; note that this command should be preceeded with a newline
     -   `\hfill some content` pushes content to the right
     -   `\raggedright` and `\raggedleft` for left and right alignment respectively (?)
 
@@ -170,6 +171,7 @@ Latex
             a line break
         -   Checkmark --
             <https://tex.stackexchange.com/questions/132783/how-to-write-checkmark-in-latex>
+        -   To change the font-size for all tikz nodes, specify like so `\begin{tikzpicture}[node distance=2cm, font=\small]`
 
 -   Tables
 
@@ -182,6 +184,7 @@ Latex
 
     \end{tabular}
     ```
+    - To wrap text, fix the width using `array` package (refer [overleaf doc](https://www.overleaf.com/learn/latex/Tables)); alternatively use `p{width}`
     -   Learn more [here](https://www.overleaf.com/learn/latex/Tables)
     -   Diagonal box --
         <https://tex.stackexchange.com/questions/27193/latex-table-cell-with-a-diagonal-line-and-2-sub-cells>
@@ -195,6 +198,27 @@ Latex
   - `\verb|...|`
   - Note: underscores need to be escaped
 
+- Inserting images
+  ```latex
+  \documentclass{article}
+  \usepackage{graphicx}
+  \graphicspath{ {./images/} } % specify base-path
+  
+  \begin{document}
+  The universe is immense and it seems to be homogeneous, 
+  in a large scale, everywhere we look at.
+  
+  \includegraphics{universe} % rendering the actual image
+  
+  There's a picture of a galaxy above
+  \end{document}
+  ```
+  - Ref. [Inserting Images - Overleaf](https://www.overleaf.com/learn/latex/Inserting_Images)
+
 -   [Bibliography](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex)
     -   [Converters](https://www.bibtex.com/converters/)
     -   [BibTex Tidy](https://flamingtempura.github.io/bibtex-tidy/)
+
+- Reading 
+  - "LaTeX for complete novices" - Nicola L. C. Talbot
+  - [Tex vs LateX](https://tex.stackexchange.com/questions/49/what-is-the-difference-between-tex-and-latex)

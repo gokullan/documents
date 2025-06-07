@@ -8,3 +8,7 @@
 - `\onslide`
 - `\only`
 - `\usetheme` and `\usecolortheme`
+
+## References
+- [Beamer - Overleaf, Online LaTeX Editor](https://www.overleaf.com/learn/latex/Beamer)
+  - Go to "Themes and colorthemes" section to get built-in themes
