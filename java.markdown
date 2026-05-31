@@ -97,6 +97,7 @@
 -   No default arguments in Java -- use function overloading
 -   Scanner --
     <https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo>
+- [Effectively final](https://stackoverflow.com/questions/15655012/how-does-the-final-keyword-in-java-work-i-can-still-modify-an-object)
 
 ## Doubts
 -   List vs. ArrayList vs. LinkedList
