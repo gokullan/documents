@@ -401,7 +401,15 @@ cdo exec "%s" .. printf("/%s\\n/\\1\\r\\2%s\\r/g", pattern_to_match, line_to_add
 ## Autocommands
 TODO
 
-### References
+## Advanced Regex
+- `\v`: "Very magic" mode - Use this to avoid using `\` to bypass reserved regex-chars
+- Lookaheads:
+  - Forward (`(PATTERN)@<=`) and backward (`(PATTERN)@=`)
+  - Positive (`(PATTERN)@=`) and negative (`(PATTERN)@!`)
+- Non-greedy matching: To match the very first pattern, use `(PATTERN){-}`
+- Advanced example: Replace white-spaces with `_` for a phrase beginning and ending with specific words - `%s/\v((Purchase |ECOM_NP ).{-})@<= (.{-} USD)@=/_/g`
+
+## References
 - [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
 - [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)
 - [Neovim config sample - 1](https://github.com/miltonllera/neovim-config)
