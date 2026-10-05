@@ -409,6 +409,9 @@ TODO
 - Non-greedy matching: To match the very first pattern, use `(PATTERN){-}`
 - Advanced example: Replace white-spaces with `_` for a phrase beginning and ending with specific words - `%s/\v((Purchase |ECOM_NP ).{-})@<= (.{-} USD)@=/_/g`
 
+## Plugins
+- How to find out what args are accepted in `require(plugin).setup({...})`?
+
 ## References
 - [Lua guide - neovim](https://neovim.io/doc/user/lua-guide.html)
 - [Using VimPlug with Lua](https://dev.to/vonheikemen/neovim-using-vim-plug-in-lua-3oom)

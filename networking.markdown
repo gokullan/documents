@@ -156,6 +156,7 @@
 ### 2026
 - What happens if there were only MACs or only IPs?
 - Why does each router-interface need a different MAC?
+- NTP, SNMP
 
 ## References
 -   MDN Documentation
