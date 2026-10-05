@@ -25,6 +25,19 @@
         -   Source code
         -   Dependencies
 
+## Docker vs. VM
+- This can otherwise be reframed as "Docker-engine vs. Hypervisor"
+- VMs have a dedicated OS and the Hypervisor enables the VM to use the resources of the host in the manner required by that OS
+- Docker-engine interfaces directly with the kernel, (i.e.), there is no new OS-layer in-between the Engine and the kernel<sup>+</sup>
+- Emulator vs. Hypervisor
+  - Emulator is a *software* that is used to replicate a hardware-architecture that is completely different from the host
+  - Hypervisor is also a software, but uses hardware-assisted technologies (on-chip) to help *isolate and execute* instructions of a different OS that uses the same chip-architecture
+    - See more on "trap and emulate"
+- WSL2: Since Docker is linux-based, running it on Windows requires a Linux VM in the first place!
+- QEMU: Acts as both an emulator and a hypervisor "sidekick"
+
+<sup>+</sup> Technically, the Docker Engine does not sit between the container and the kernel. Instead, the containers themselves interface directly with the host kernel. The Docker Engine is simply the management tool (the orchestrator) that configures the Linux namespaces and cgroups. Once the containerized process starts, the Docker Engine steps out of the way, and the process talks directly to the host kernel just like any other native software.
+
 ## Dockerfile
 -   Set of instructions (adding layers to parent image) to create Docker image
 ```dockerfile
@@ -69,10 +82,12 @@ COPY . .
 ```
 
 ## Volumes
--   Used to map a directory in a container to a host directory
--   `docker run -v /absolute/path/to/host/directory:/container/directory image`
--   To prevent mapping of any folder to the host, create an anonymous volume
-    `docker run ... -v /container/directory/folder ... image`
+- Persisting data when using Docker-containers can be done in 2 ways => volume-mount and bind-mount
+- Bind-mount is used to map directories used by the constainer to those on the user's file-system; here ownership of the directory is with the user, not Docker 
+  - `docker run -v /absolute/path/to/host/directory:/container/directory image` (`-v` => `--mount type=bind,src=...,dst=...`; `dst` is the always the container-path)
+- Volume-mount also does the same; but here the ownership is with Docker and is "hidden" from the user (these files expected to be accessed only via docker-commands); this is much faster that bind-mount
+  - `docker run ... -v /container/directory/folder ... image` (`-v` => `--mount type=volume,src=...,dst=...`)
+  - This is again of 2 types: anonymous volume (above) and named-volume
 
 ## `docker compose`
 -   Below is an example of `docker-compose.yaml`
@@ -91,7 +106,7 @@ services:
 -   `docker compose up` will create the images and containers
 -   `docker compose down` will delete the containers (but not the images and
     volumes)
-    -   Add `-rmi all -v` to delete images and volumes as well
+-   Add `-rmi all -v` to delete images and volumes as well
 
 ## Commands
 -   `docker container stats`

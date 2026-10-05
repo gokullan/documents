@@ -271,7 +271,11 @@ register)
 
 -   Jump to matching brace: press \`%\`
 
--   Fix indentation: \`gg\`, then \`=G\`
+- [Fix indentation](https://vimtricks.com/p/vimtrick-indenting-code/)
+  - `gg`, then `=G` to indent the whole file
+  - `4==` to indent the upcoming 4 line
+  - `=%` to indent a specific block
+  - `V` + `3j` (to select 3 lines) + `=` to indent specific lines using visual-selection
 
     -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
