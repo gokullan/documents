@@ -39,7 +39,8 @@
 <sup>+</sup> Technically, the Docker Engine does not sit between the container and the kernel. Instead, the containers themselves interface directly with the host kernel. The Docker Engine is simply the management tool (the orchestrator) that configures the Linux namespaces and cgroups. Once the containerized process starts, the Docker Engine steps out of the way, and the process talks directly to the host kernel just like any other native software.
 
 ## Dockerfile
--   Set of instructions (adding layers to parent image) to create Docker image
+- Set of instructions (adding layers to parent image) to create Docker image
+- The `CMD ...` commands are run inside the container
 ```dockerfile
 # parent image
 # pulled locally or from hub
@@ -85,6 +86,7 @@ COPY . .
 - Persisting data when using Docker-containers can be done in 2 ways => volume-mount and bind-mount
 - Bind-mount is used to map directories used by the constainer to those on the user's file-system; here ownership of the directory is with the user, not Docker 
   - `docker run -v /absolute/path/to/host/directory:/container/directory image` (`-v` => `--mount type=bind,src=...,dst=...`; `dst` is the always the container-path)
+  - For instance, if you are running a local application via Docker and you want changes you make to this codebase to be reflected without rebuilding the image and restarting the container, you can do so by mapping the `WORKDIR` with the project-directory. This will work provided your start commmand supports hot reloads (eg. `nodemon`)
 - Volume-mount also does the same; but here the ownership is with Docker and is "hidden" from the user (these files expected to be accessed only via docker-commands); this is much faster that bind-mount
   - `docker run ... -v /container/directory/folder ... image` (`-v` => `--mount type=volume,src=...,dst=...`)
   - This is again of 2 types: anonymous volume (above) and named-volume
@@ -122,6 +124,15 @@ services:
 -   `docker exec -it container-name` /bin/bash
     -   It is sometimes `/bin/sh`
     -   [Reference](https://stackoverflow.com/questions/26153686/how-do-i-run-a-command-on-an-already-existing-docker-container)
+
+## Docker Virtual Bridge Network
+
+## Practical learnings
+- Build image; then run it (run => create container)
+- Using `buildx` to build images is preferred (`export DOCKER_BUILDKIT=1`)
+  - `buildx` lets you build images for multiple CPU-architectures
+- Dockerfile vs. `docker compose`: Use the latter if your application requires multiple images; `compose` requires separate download
+- Once the container is up and running, lauching it on the browser via localhost will not work because it is running on port 3001 *of the container* (see Virtual Bridge section)
  
 ## Doubts
 -   Can an application developed for Windows be run on a container in Linux?

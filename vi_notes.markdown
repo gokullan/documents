@@ -276,8 +276,14 @@ register)
   - `4==` to indent the upcoming 4 line
   - `=%` to indent a specific block
   - `V` + `3j` (to select 3 lines) + `=` to indent specific lines using visual-selection
+  - `<<` / `>>` to indent current-line
+- `w` to go to the next word; `b` to move to the previous word (prefix with number if needed)
+- `$` to move to the end-of-line in visual-mode
+- `da[` to Delete Around `[` ("Around" => Inside + end-points included)
+- `ci[` to Change Inside `[` (this puts the cursor into insert-mode after deleting)
+- `dw` to delete the current word
 
-    -   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
+-   <https://www.freecodecamp.org/news/7-vim-tips-that-changed-my-life/>
 
 - Copy filename
   - [Reference](https://stackoverflow.com/a/64225287/13711617)
